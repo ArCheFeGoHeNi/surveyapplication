@@ -6,14 +6,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class survey {
+public class Survey {
 
     //Automatically generating iterating id values
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long surveyId;
 
-    public survey () {
+    public Survey() {
 
     }
 
