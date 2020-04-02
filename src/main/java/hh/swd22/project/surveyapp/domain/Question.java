@@ -1,5 +1,7 @@
 package hh.swd22.project.surveyapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,9 +9,14 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long questionID;
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn
+    private Survey survey;
+
     private String question;
     private String questiontype;
-    private Survey survey;
 
     public Question() {
 

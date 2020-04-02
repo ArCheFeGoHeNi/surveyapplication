@@ -11,7 +11,7 @@ public class Survey {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long surveyId;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "survey")
     private List<Question> questionList;
 
     private String surveyDesc;
