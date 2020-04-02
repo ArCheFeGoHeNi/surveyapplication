@@ -1,11 +1,9 @@
 package hh.swd22.project.surveyapp.domain;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 
 @Entity
 public class Question {
@@ -23,6 +21,38 @@ public class Question {
     public Question(String question, String questiontype, Survey survey) {
         this.question = question;
         this.questiontype = questiontype;
+        this.survey = survey;
+    }
+
+    public Long getQuestionID() {
+        return questionID;
+    }
+
+    public void setQuestionID(Long questionID) {
+        this.questionID = questionID;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    public String getQuestiontype() {
+        return questiontype;
+    }
+
+    public void setQuestiontype(String questiontype) {
+        this.questiontype = questiontype;
+    }
+
+    public Survey getSurvey() {
+        return survey;
+    }
+
+    public void setSurvey(Survey survey) {
         this.survey = survey;
     }
 }
