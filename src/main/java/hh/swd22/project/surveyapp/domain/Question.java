@@ -11,7 +11,7 @@ public class Question {
     private Long questionID;
 
     @ManyToOne
-    @JsonIgnore
+    @JsonIgnore //Critical for stopping endless looping
     @JoinColumn
     private Survey survey;
 
