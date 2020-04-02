@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class question {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long questionID;
+    private Long questionID;
 
     //private Survey survey;
     private String question;
