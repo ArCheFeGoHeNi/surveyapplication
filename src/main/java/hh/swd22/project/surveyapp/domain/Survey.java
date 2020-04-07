@@ -20,5 +20,28 @@ public class Survey {
 
     }
 
+    public Long getSurveyId() {
+        return surveyId;
+    }
+
+    public void setSurveyId(Long surveyId) {
+        this.surveyId = surveyId;
+    }
+
+    public List<Question> getQuestionList() {
+        return questionList;
+    }
+
+    public void setQuestionList(List<Question> questionList) {
+        this.questionList = questionList;
+    }
+
+    public String getSurveyDesc() {
+        return surveyDesc;
+    }
+
+    public void setSurveyDesc(String surveyDesc) {
+        this.surveyDesc = surveyDesc;
+    }
 }
 
