@@ -18,7 +18,7 @@ public class QuestionController {
     private SurveyRepository surveyRepository;
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String index () {
+    public String index() {
 
         return "index"; //index.html
 
