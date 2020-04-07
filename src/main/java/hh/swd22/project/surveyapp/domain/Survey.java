@@ -1,6 +1,9 @@
 package hh.swd22.project.surveyapp.domain;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import java.util.List;
 
 @Entity
@@ -12,6 +15,7 @@ public class Survey {
     private Long surveyId;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "survey")
+    @JsonBackReference
     private List<Question> questionList;
 
     private String surveyDesc;

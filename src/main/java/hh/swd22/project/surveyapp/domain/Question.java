@@ -1,6 +1,7 @@
 package hh.swd22.project.surveyapp.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 
@@ -11,7 +12,7 @@ public class Question {
     private Long questionID;
 
     @ManyToOne
-    @JsonIgnore //Critical for stopping endless looping
+    @JsonManagedReference //Critical for stopping endless looping
     @JoinColumn
     private Survey survey;
 
