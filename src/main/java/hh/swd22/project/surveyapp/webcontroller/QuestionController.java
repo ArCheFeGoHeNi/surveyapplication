@@ -17,6 +17,7 @@ public class QuestionController {
     @Autowired
     private SurveyRepository surveyRepository;
 
+    //Mapping /index endpoint to thymeleaf template index.html
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index() {
 
@@ -24,12 +25,23 @@ public class QuestionController {
 
     }
 
+    //Mapping /surveylist endpoint to thymeleaf template surveylist.html
     @RequestMapping(value = "/surveylist")
     public String surveyList(Model model) {
 
         model.addAttribute("surveyList", surveyRepository.findAll());
 
         return "surveylist"; //surveylist.html
+
+    }
+
+    //Mapping /questionlist endpoint to thymeleaf template questionlist.html
+    @RequestMapping(value = "/questionlist")
+    public String questionList(Model model) {
+
+        model.addAttribute("questionList", questionRepository.findAll());
+
+        return "questionlist"; //questionlist.html
 
     }
 

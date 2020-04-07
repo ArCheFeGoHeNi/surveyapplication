@@ -24,9 +24,8 @@ public class Survey {
 
     }
 
-    public Survey(String surveyDesc, List<Question> questionList) {
+    public Survey(String surveyDesc) {
         this.surveyDesc = surveyDesc;
-        this.questionList = questionList;
     }
 
     public Long getSurveyId() {
