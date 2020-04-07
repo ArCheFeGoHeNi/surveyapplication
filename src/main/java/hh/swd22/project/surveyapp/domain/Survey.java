@@ -20,5 +20,10 @@ public class Survey {
 
     }
 
+    public Survey(String surveyDesc, List<Question> questionList) {
+        this.surveyDesc = surveyDesc;
+        this.questionList = questionList;
+    }
+
 }
 
