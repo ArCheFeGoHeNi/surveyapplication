@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 
-@Entity
+@Entity //Entity Class.
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
