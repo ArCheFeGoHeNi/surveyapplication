@@ -1,12 +1,17 @@
 package hh.swd22.project.surveyapp.webcontroller;
 
+import hh.swd22.project.surveyapp.domain.Question;
 import hh.swd22.project.surveyapp.domain.QuestionRepository;
 import hh.swd22.project.surveyapp.domain.SurveyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
 public class QuestionController {
@@ -26,7 +31,7 @@ public class QuestionController {
     }
 
     //Mapping /surveylist endpoint to thymeleaf template surveylist.html
-    @RequestMapping(value = "/surveylist")
+    @RequestMapping(value = "/surveylist", method = RequestMethod.GET)
     public String surveyList(Model model) {
 
         model.addAttribute("surveyList", surveyRepository.findAll());
@@ -36,7 +41,7 @@ public class QuestionController {
     }
 
     //Mapping /questionlist endpoint to thymeleaf template questionlist.html
-    @RequestMapping(value = "/questionlist")
+    @RequestMapping(value = "/questionlist", method = RequestMethod.GET)
     public String questionList(Model model) {
 
         model.addAttribute("questionList", questionRepository.findAll());
@@ -45,4 +50,11 @@ public class QuestionController {
 
     }
 
+    @CrossOrigin
+    @RequestMapping(value = "/questions", method = RequestMethod.GET)
+    public @ResponseBody List<Question> questions() {
+
+        return (List<Question>) questionRepository.findAll();
+
+    }
 }

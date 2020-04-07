@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>List of questions</title>
+
+    <link rel="stylesheet" href="/globalstyle.css/"/>
+
+</head>
+<body>
+
+<div id="wrapper">
+
+    <h3>List of questions</h3>
+
+    <table id="list">
+        <thead>
+            <tr>
+                <th>Question ID</th>
+                <th>Question</th>
+                <th>Question type</th>
+                <th>Inside the survey</th>
+            </tr>
+        </thead>
+
+        <tr th:each=" question : ${questionList}">
+            <td th:text="${question.questionID}"></td>
+            <td th:text="${question.question}"></td>
+            <td th:text="${question.questiontype}"></td>
+            <td th:text="${question.survey}"></td>
+        </tr>
+    </table>
+
+</div>
+
+</body>
+</html>
