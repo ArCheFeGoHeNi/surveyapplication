@@ -25,6 +25,8 @@ public class SurveyappApplication {
 		return (args) -> {
 
 			surveyRepository.save(new Survey("Opiskelu hyvinvointi"));
+			surveyRepository.save(new Survey("Työhyvinvointi"));
+			surveyRepository.save(new Survey("Etäopiskelu kokemukset"));
 
 			questionRepository.save(new Question("Käytkö täysipäiväisesti töissä?", "text",
 													surveyRepository.findBySurveyDesc("Opiskelu hyvinvointi").get(0)));

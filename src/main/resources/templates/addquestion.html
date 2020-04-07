@@ -3,21 +3,51 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>List of questions</title>
+
+    <link rel="stylesheet" href="/globalstyle.css/"/>
+
 </head>
 <body>
+
 <div id="wrapper">
-    <h3>Add Question</h3>
-    <form th:object="${question}">
+
+    <h3>Add a question</h3>
+    <br>
+
+    <form th:object="${question}" th:action="@{save}" method="post">
+
         <div>
-        <label>Question</label>
-            <input/>
+            <label for="question">The question</label><input type="text" id="question" th:field="*{question}">
         </div>
+        <br>
 
+        <div>
+            <select id="questiontype" th:field="*{questiontype}">
+                <option value="choose">Choose question type</option>
+                <option th:value="text">Text field question</option>
+                <option th:value="multiplechoice">Multiple choice question</option>
+            </select>
+        </div>
+        <br>
 
+        <div>
+            <select id="survey" th:field="*{survey}">
+                <option value="Choose">Choose the survey</option>
+                <option th:each="survey : ${surveys}"
+                        th:value="${survey.surveyId}"
+                        th:text="${survey.surveyDesc}"></option>
+            </select>
+            <label for="survey">Which survey is this question a part of:</label>
+        </div>
+        <br>
+
+        <button type="submit">Save the question</button>
 
     </form>
 
 </div>
+
 </body>
+
 </html>
