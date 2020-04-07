@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 
-@Entity //Entity Class not adding piste this time around
+@Entity //Entity Class
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
