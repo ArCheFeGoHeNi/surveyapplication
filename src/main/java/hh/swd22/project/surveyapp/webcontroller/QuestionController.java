@@ -29,6 +29,8 @@ public class QuestionController {
 
         model.addAttribute("surveyList", surveyRepository.findAll());
 
+        return "surveylist"; //surveylist.html
+
     }
 
 }
