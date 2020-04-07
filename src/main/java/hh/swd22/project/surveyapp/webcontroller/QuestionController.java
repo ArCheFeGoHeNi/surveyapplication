@@ -50,6 +50,29 @@ public class QuestionController {
 
     }
 
+    //Mapping endpoint /addquestion to addquestion.html thymeleaf template in /resources/templates/
+    @RequestMapping(value = "/addquestion", method = RequestMethod.GET)
+    public String addQuestion(Model model) {
+
+        model.addAttribute("question", new Question());
+        model.addAttribute("surveys", surveyRepository.findAll());
+
+        return "addquestion"; //addquestion.html
+
+    }
+
+    //Endpoing /save saves the song to the database and redirects to /questionlist endpoint
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String saveQuestion(Question question) {
+
+        questionRepository.save(question);
+
+        return "redirect:questionlist"; //Redirects to /questionlist endpoint
+    }
+
+
+    //RESTFUL SERVICE ENDPOINTS
+
     @CrossOrigin
     @RequestMapping(value = "/questions", method = RequestMethod.GET)
     public @ResponseBody List<Question> questions() {
