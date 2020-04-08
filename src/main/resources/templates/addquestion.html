@@ -18,7 +18,9 @@
     <form th:object="${question}" th:action="@{save}" method="post">
 
         <div>
-            <label for="question">The question</label><input type="text" id="question" th:field="*{question}">
+            <label for="question">The question</label>
+            <br>
+            <input type="text" id="question" th:field="*{question}">
         </div>
         <br>
 
@@ -32,13 +34,15 @@
         <br>
 
         <div>
+            <label for="survey">Which survey is this question a part of:</label>
+            <br>
             <select id="survey" th:field="*{survey}">
                 <option value="Choose">Choose the survey</option>
                 <option th:each="survey : ${surveys}"
                         th:value="${survey.surveyId}"
                         th:text="${survey.surveyDesc}"></option>
             </select>
-            <label for="survey">Which survey is this question a part of:</label>
+
         </div>
         <br>
 
