@@ -12,13 +12,13 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long questionID;
 
+    private String question;
+    private String questiontype;
+
     @ManyToOne
     @JsonManagedReference //Critical for stopping endless looping
     @JoinColumn
     private Survey survey;
-
-    private String question;
-    private String questiontype;
 
     public Question() {
 
