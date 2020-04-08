@@ -29,11 +29,11 @@ public class SurveyappApplication {
 			surveyRepository.save(new Survey("Etäopiskelu kokemukset"));
 
 			questionRepository.save(new Question("Käytkö täysipäiväisesti töissä?", "text",
-													surveyRepository.findBySurveyDesc("Opiskelu hyvinvointi").get(0)));
+													surveyRepository.findBySurveyName("Opiskelu hyvinvointi").get(0)));
 			questionRepository.save(new Question("Montako kertaa viikossa juot alkoholia?", "text",
-													surveyRepository.findBySurveyDesc("Opiskelu hyvinvointi").get(0)));
+													surveyRepository.findBySurveyName("Opiskelu hyvinvointi").get(0)));
 			questionRepository.save(new Question("Miksi juot niin usein?", "text",
-													surveyRepository.findBySurveyDesc("Opiskelu hyvinvointi").get(0)));
+													surveyRepository.findBySurveyName("Opiskelu hyvinvointi").get(0)));
 
 		};
 	}

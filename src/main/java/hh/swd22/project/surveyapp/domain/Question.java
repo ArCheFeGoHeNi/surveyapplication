@@ -1,19 +1,19 @@
 
 package hh.swd22.project.surveyapp.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 
 @Entity //Entity Class
 public class Question {
+
+    private String questionText;
+    private String questionType;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long questionID;
-
-    private String question;
-    private String questiontype;
 
     @ManyToOne
     @JsonManagedReference //Critical for stopping endless looping
@@ -24,9 +24,9 @@ public class Question {
 
     }
 
-    public Question(String question, String questiontype, Survey survey) {
-        this.question = question;
-        this.questiontype = questiontype;
+    public Question(String questionText, String questionType, Survey survey) {
+        this.questionText = questionText;
+        this.questionType = questionType;
         this.survey = survey;
     }
 
@@ -38,20 +38,20 @@ public class Question {
         this.questionID = questionID;
     }
 
-    public String getQuestion() {
-        return question;
+    public String getQuestionText() {
+        return questionText;
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
+    public void setQuestionText(String question) {
+        this.questionText = question;
     }
 
-    public String getQuestiontype() {
-        return questiontype;
+    public String getQuestionType() {
+        return questionType;
     }
 
-    public void setQuestiontype(String questiontype) {
-        this.questiontype = questiontype;
+    public void setQuestionType(String questiontype) {
+        this.questionType = questiontype;
     }
 
     public Survey getSurvey() {

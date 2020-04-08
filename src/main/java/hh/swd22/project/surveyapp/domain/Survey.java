@@ -18,14 +18,14 @@ public class Survey {
     @JsonBackReference
     private List<Question> questionList;
 
-    private String surveyDesc;
+    private String surveyName;
 
     public Survey() {
 
     }
 
-    public Survey(String surveyDesc) {
-        this.surveyDesc = surveyDesc;
+    public Survey(String surveyName) {
+        this.surveyName = surveyName;
     }
 
     public Long getSurveyId() {
@@ -44,16 +44,16 @@ public class Survey {
         this.questionList = questionList;
     }
 
-    public String getSurveyDesc() {
-        return surveyDesc;
+    public String getSurveyName() {
+        return surveyName;
     }
 
-    public void setSurveyDesc(String surveyDesc) {
-        this.surveyDesc = surveyDesc;
+    public void setSurveyName(String surveyDesc) {
+        this.surveyName = surveyDesc;
     }
 
     @Override
     public String toString() {
-        return surveyDesc;
+        return surveyName;
     }
 }

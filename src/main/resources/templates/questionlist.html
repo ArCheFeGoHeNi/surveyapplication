@@ -26,8 +26,8 @@
 
         <tr th:each=" question : ${questionList}">
             <td th:text="${question.questionID}"></td>
-            <td th:text="${question.question}"></td>
-            <td th:text="${question.questiontype}"></td>
+            <td th:text="${question.questionText}"></td>
+            <td th:text="${question.questionType}"></td>
             <td th:text="${question.survey}"></td>
         </tr>
     </table>

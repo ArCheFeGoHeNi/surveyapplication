@@ -20,12 +20,12 @@
         <div>
             <label for="question">The question</label>
             <br>
-            <input type="text" id="question" th:field="*{question}">
+            <input type="text" id="question" th:field="*{questionText}">
         </div>
         <br>
 
         <div>
-            <select id="questiontype" th:field="*{questiontype}">
+            <select id="questiontype" th:field="*{questionType}">
                 <option value="choose">Choose question type</option>
                 <option th:value="text">Text field question</option>
                 <option th:value="multiplechoice">Multiple choice question</option>
@@ -40,7 +40,7 @@
                 <option value="Choose">Choose the survey</option>
                 <option th:each="survey : ${surveys}"
                         th:value="${survey.surveyId}"
-                        th:text="${survey.surveyDesc}"></option>
+                        th:text="${survey.surveyName}"></option>
             </select>
 
         </div>
