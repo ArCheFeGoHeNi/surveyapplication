@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>All surveys</title>
+
+    <link rel="stylesheet" href="/globalstyle.css/"/>
+
+</head>
+<body>
+
+<div id="wrapper">
+
+    <h3>List of surveys</h3>
+
+    <table id="list">
+        <thead>
+        <tr>
+            <th>Survey ID</th>
+            <th>Survey name</th>
+            <th>Survey description</th>
+        </tr>
+        </thead>
+
+        <tr th:each=" survey : ${surveyList}">
+            <td th:text="${survey.surveyId}"></td>
+            <td th:text="${survey.surveyName}"></td>
+            <td th:text="${survey.surveyDesc}"></td>
+            <td> <button>Edit survey</button></td>
+        </tr>
+    </table>
+
+    <a href="/addsurvey">Add a new survey</a>
+
+</div>
+
+</body>
+
+</html>

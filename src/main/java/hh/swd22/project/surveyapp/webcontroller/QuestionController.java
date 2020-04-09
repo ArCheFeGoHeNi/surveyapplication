@@ -35,16 +35,6 @@ public class QuestionController {
 
     }
 
-    //Mapping /surveylist endpoint to thymeleaf template surveylist.html
-    @RequestMapping(value = "/surveylist", method = RequestMethod.GET)
-    public String surveyList(Model model) {
-
-        model.addAttribute("surveyList", surveyRepository.findAll());
-
-        return "surveylist"; //surveylist.html
-
-    }
-
     //Mapping /questionlist endpoint to thymeleaf template questionlist.html
     @RequestMapping(value = "/questionlist", method = RequestMethod.GET)
     public String questionList(Model model) {
@@ -67,7 +57,7 @@ public class QuestionController {
     }
 
     //Endpoing /save saves the song to the database and redirects to /questionlist endpoint
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @RequestMapping(value = "/savequestion", method = RequestMethod.POST)
     public String saveQuestion(Question question) {
 
         questionRepository.save(question);

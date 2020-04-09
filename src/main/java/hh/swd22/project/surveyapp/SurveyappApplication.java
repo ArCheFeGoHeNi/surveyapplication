@@ -24,9 +24,9 @@ public class SurveyappApplication {
 	public CommandLineRunner surveyDemo(QuestionRepository questionRepository, SurveyRepository surveyRepository) {
 		return (args) -> {
 
-			surveyRepository.save(new Survey("Opiskelu hyvinvointi"));
-			surveyRepository.save(new Survey("Työhyvinvointi"));
-			surveyRepository.save(new Survey("Etäopiskelu kokemukset"));
+			surveyRepository.save(new Survey("Opiskelu hyvinvointi", "Kysely opiskelijoiden hyvinvoinnista"));
+			surveyRepository.save(new Survey("Työhyvinvointi", "Kysely työntekijöiden hyvinvoinnista"));
+			surveyRepository.save(new Survey("Etäopiskelu kokemukset", "Kysely etäopiskelu kokemuksista"));
 
 			questionRepository.save(new Question("Käytkö täysipäiväisesti töissä?", "text",
 													surveyRepository.findBySurveyName("Opiskelu hyvinvointi").get(0)));

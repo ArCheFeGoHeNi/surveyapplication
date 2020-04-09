@@ -19,11 +19,18 @@ public class Survey {
     private List<Question> questionList;
 
     private String surveyName;
+    private String surveyDesc;
 
     public Survey() {
 
     }
 
+    public Survey(String surveyName, String surveyDesc) {
+        this.surveyName = surveyName;
+        this.surveyDesc = surveyDesc;
+    }
+
+    //Another constructor so it's possible to create a survey without giving it a description
     public Survey(String surveyName) {
         this.surveyName = surveyName;
     }
@@ -50,6 +57,14 @@ public class Survey {
 
     public void setSurveyName(String surveyDesc) {
         this.surveyName = surveyDesc;
+    }
+
+    public String getSurveyDesc() {
+        return surveyDesc;
+    }
+
+    public void setSurveyDesc(String surveyDesc) {
+        this.surveyDesc = surveyDesc;
     }
 
     @Override
