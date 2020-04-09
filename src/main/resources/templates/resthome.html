@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.com">
+<head>
+<meta charset="utf-8" />
+<title>REST Home Page (SurveyApp)</title>
+</head>
+<body>
+<h1>REST Home Page</h1>
+
+	<h2>All Questions</h2>
+	<p>
+		<strong>Method:</strong> GET <strong>Endpoint:</strong> <strong><a
+			href="/questions">/questions</a></strong>
+	</p>
+	<p>
+		<strong>JSON Example:</strong>
+	</p>
+	<pre><code>[
+{
+questionText: "Käytkö täysipäiväisesti töissä?",
+questionType: "text",
+questionID: 4,
+survey: {
+surveyId: 1,
+surveyName: "Opiskelu hyvinvointi"
+}
+},
+{
+questionText: "Montako kertaa viikossa juot alkoholia?",
+questionType: "text",
+questionID: 5,
+survey: {
+surveyId: 1,
+surveyName: "Opiskelu hyvinvointi"
+}
+},
+{
+questionText: "Miksi juot niin usein?",
+questionType: "text",
+questionID: 6,
+survey: {
+surveyId: 1,
+surveyName: "Opiskelu hyvinvointi"
+}
+}
+]</code></pre>
+
+	<h2>Question By Id</h2>
+	<p>
+		<strong>GET </strong><strong> /questions/{id} </strong> <strong>
+		<a href="/questions/5">/questions/5</a></strong>
+	</p>
+	<p>
+		<strong>JSON Example:</strong>
+	</p>
+	<pre><code>{
+questionText: "Montako kertaa viikossa juot alkoholia?",
+questionType: "text",
+questionID: 5,
+survey: {
+surveyId: 1,
+surveyName: "Opiskelu hyvinvointi"
+}
+}</code></pre>
+	<h2>New Question with POST</h2>
+	<p>
+		<strong>POST </strong> <strong> /eproducts (WITH POST)</strong> (Test
+		with <a href="https://www.getpostman.com/" target="_blank">PostMan</a>/etc.)
+	</p>
+	<p>
+		<strong>JSON Example:</strong>
+	</p>
+	<pre><code>{
+questionText: "Kuinka usein olet väsynyt viikon aikana?",
+questionType: "text",
+questionID: 5, // Not needed - autoincrement is on this time around.
+survey: {
+surveyId: 1,
+surveyName: "Opiskelu hyvinvointi"
+}</code></pre>
+</body>
+</html>
