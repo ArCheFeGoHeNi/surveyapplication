@@ -87,7 +87,7 @@ public class QuestionController {
 
     }
     
-  //RESTful service to get one product by id.
+     //RESTful service to get one product by id.
   	@CrossOrigin
   	@RequestMapping(value = "/questions/{id}", method = RequestMethod.GET)
   	public @ResponseBody Optional <Question> findQuestionRest(@PathVariable Long id) { // Täytyy olla id, ei toimi  tässä! Arttu Kesanto 09.04.2020.
