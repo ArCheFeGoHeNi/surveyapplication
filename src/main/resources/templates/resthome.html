@@ -2,6 +2,7 @@
 <html xmlns:th="www.thymeleaf.com">
 <head>
 <meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>REST Home Page (SurveyApp)</title>
 </head>
 <body>
@@ -64,7 +65,7 @@ surveyName: "Opiskelu hyvinvointi"
 }</code></pre>
 	<h2>New Question with POST</h2>
 	<p>
-		<strong>POST </strong> <strong> /eproducts (WITH POST)</strong> (Test
+		<strong>POST </strong> <strong> /questions (WITH POST)</strong> (Test
 		with <a href="https://www.getpostman.com/" target="_blank">PostMan</a>/etc.)
 	</p>
 	<p>
@@ -78,5 +79,169 @@ survey: {
 surveyId: 1,
 surveyName: "Opiskelu hyvinvointi"
 }</code></pre>
+
+
+<h2>All Surveys</h2>
+	<p>
+		<strong>Method:</strong> GET <strong>Endpoint:</strong> <strong><a
+			href="/surveyslist">/surveyslist</a></strong>
+	</p>
+	<p>
+		<strong>JSON Example:</strong>
+	</p>
+	<pre><code>[
+{
+surveyId: 2,
+surveyName: "Opiskelu hyvinvointi",
+surveyDesc: "Kysely opiskelijoiden hyvinvoinnista"
+},
+{
+surveyId: 3,
+surveyName: "Työhyvinvointi",
+surveyDesc: "Kysely työntekijöiden hyvinvoinnista"
+},
+{
+surveyId: 4,
+surveyName: "Etäopiskelu kokemukset",
+surveyDesc: "Kysely etäopiskelu kokemuksista"
+},
+{
+surveyId: 11,
+surveyName: "Lollero",
+surveyDesc: "Lollero"
+}
+]
+	</code></pre>
+	
+	<h2>Surveys By Id</h2>
+	<p>
+		<strong>GET </strong><strong> /surveyslist/{id} </strong> <strong>
+		<a href="/surveyslist/3">/surveyslist/3</a></strong>
+	</p>
+	<p>
+		<strong>JSON Example:</strong>
+	</p>
+	<pre><code>{
+surveyId: 3,
+surveyName: "Työhyvinvointi",
+surveyDesc: "Kysely työntekijöiden hyvinvoinnista"
+}</code></pre>
+<h2>New Survey with POST</h2>
+	<p>
+		<strong>POST </strong> <strong> /surveyslist (WITH POST)</strong> (Test
+		with <a href="https://www.getpostman.com/" target="_blank">PostMan</a>/etc.)
+	</p>
+	<p>
+		<strong>JSON Example:</strong>
+	</p>
+	<pre><code>surveyId: 3, // NOT NEEDED, autoincrement is on.
+surveyName: "Työhyvinvointi",
+surveyDesc: "Kysely työntekijöiden hyvinvoinnista"
+}</code></pre>
+
+<h2>All Answers</h2>
+	<p>
+		<strong>Method:</strong> GET <strong>Endpoint:</strong> <strong><a
+			href="/answers">/answers</a></strong>
+	</p>
+	<p>
+		<strong>JSON Example:</strong>
+	</p>
+	<pre><code>[
+{
+answerID: 8,
+respondent: { },
+question: {
+questionText: "Käytkö täysipäiväisesti töissä?",
+questionType: "text",
+questionID: 5,
+survey: {
+surveyId: 2,
+surveyName: "Opiskelu hyvinvointi",
+surveyDesc: "Kysely opiskelijoiden hyvinvoinnista"
+}
+},
+answerText: "Kyllä käyn"
+},
+{
+answerID: 9,
+respondent: { },
+question: {
+questionText: "Montako kertaa viikossa juot alkoholia?",
+questionType: "text",
+questionID: 6,
+survey: {
+surveyId: 2,
+surveyName: "Opiskelu hyvinvointi",
+surveyDesc: "Kysely opiskelijoiden hyvinvoinnista"
+}
+},
+answerText: "Muutaman kerran"
+},
+{
+answerID: 10,
+respondent: { },
+question: {
+questionText: "Miksi juot niin usein?",
+questionType: "text",
+questionID: 7,
+survey: {
+surveyId: 2,
+surveyName: "Opiskelu hyvinvointi",
+surveyDesc: "Kysely opiskelijoiden hyvinvoinnista"
+}
+},
+answerText: "En ymmärrä ;_;"
+}
+]
+	</code></pre>
+	
+	<h2>Answers By Id</h2>
+	<p>
+		<strong>GET </strong><strong> /answers/{id} </strong> <strong>
+		<a href="/answers/8">/answers/8</a></strong>
+	</p>
+	<p>
+		<strong>JSON Example:</strong>
+	</p>
+	<pre><code>{
+answerID: 8,
+respondent: { },
+question: {
+questionText: "Käytkö täysipäiväisesti töissä?",
+questionType: "text",
+questionID: 5,
+survey: {
+surveyId: 2,
+surveyName: "Opiskelu hyvinvointi",
+surveyDesc: "Kysely opiskelijoiden hyvinvoinnista"
+}
+},
+answerText: "Kyllä käyn"
+}</code></pre>
+
+<h2>New Answer with POST</h2>
+	<p>
+		<strong>POST </strong> <strong> /answers (WITH POST)</strong> (Test
+		with <a href="https://www.getpostman.com/" target="_blank">PostMan</a>/etc.)
+	</p>
+	<p>
+		<strong>JSON Example:</strong>
+	</p>
+	<pre><code>{
+answerID: 8,
+respondent: { },
+question: {
+questionText: "Käytkö täysipäiväisesti töissä?",
+questionType: "text",
+questionID: 5,
+survey: {
+surveyId: 2,
+surveyName: "Opiskelu hyvinvointi",
+surveyDesc: "Kysely opiskelijoiden hyvinvoinnista"
+}
+},
+answerText: "Kyllä käyn"
+} // PLACEHOLDER</code></pre>
 </body>
 </html>

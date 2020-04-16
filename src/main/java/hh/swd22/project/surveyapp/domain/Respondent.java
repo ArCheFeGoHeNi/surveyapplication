@@ -23,4 +23,22 @@ public class Respondent {
 
     public Respondent() {}
 
+	public Long getRespondentID() {
+		return RespondentID;
+	}
+
+	public void setRespondentID(Long respondentID) {
+		RespondentID = respondentID;
+	}
+
+	public List<Answer> getAnswerList() {
+		return answerList;
+	}
+
+	public void setAnswerList(List<Answer> answerList) {
+		this.answerList = answerList;
+	}
+    
+    
+
 }

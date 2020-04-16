@@ -68,4 +68,13 @@ public class Question {
         this.survey = survey;
     }
 
+	public List<Answer> getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(List<Answer> answer) {
+		this.answer = answer;
+	}
+    
+
 }

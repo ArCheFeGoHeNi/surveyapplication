@@ -75,7 +75,7 @@ public class QuestionController {
     	return questionRepository.save(question);
     }
     
-    // Home page of REST services, Template created with examples
+    // Home page of REST services, Template created with examples, no need for @CrossOrigin
     @RequestMapping(value="/resthome", method = RequestMethod.GET)
     public String getRestHome() {	
     	return "resthome"; // resthome.html, oma tiedosto, ei tule importtien kautta. - Arttu Kesanto 09.04.2020.
