@@ -29,7 +29,7 @@
             <td th:text="${survey.surveyName}"></td>
             <td th:text="${survey.surveyDesc}"></td>
             <td><a th:href="@{editsurvey/{id}(id=${survey.getSurveyId()})}">Edit</a>
-                <a th:href="@{survey/{id}/addquestions (id=${survey.getSurveyId()})}">Add questions</a></td>
+                <a th:href="@{survey/{id}/addquestions(id=${survey.getSurveyId()})}">Add questions</a></td>
         </tr>
     </table>
 

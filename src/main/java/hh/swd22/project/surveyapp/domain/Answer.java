@@ -18,6 +18,7 @@ public class Answer {
     @ManyToOne
     @JsonManagedReference
     private Question question;
+    
     private String answerText;
 
     public Answer () {

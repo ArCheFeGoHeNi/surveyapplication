@@ -20,7 +20,7 @@ public class Question {
     @ManyToOne
     @JsonManagedReference //Critical for stopping endless looping
     @JoinColumn
-    private Survey survey;
+    public Survey survey;
 
     @OneToMany
     @JsonBackReference

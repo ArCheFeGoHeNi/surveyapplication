@@ -47,6 +47,10 @@ public class SurveyappApplication {
 					surveyRepository.findBySurveyName("Työhyvinvointi").get(0)));
 			questionRepository.save(new Question("Pitäskö mennä töihin senkin yhteiskunnan loiseliö?", "text",
 					surveyRepository.findBySurveyName("Työhyvinvointi").get(0)));
+			questionRepository.save(new Question("Kauan olet ollut ulkomailla opiskelemassa?", "text",
+					surveyRepository.findBySurveyName("Etäopiskelu kokemukset").get(0)));
+			questionRepository.save(new Question("Minkälaista palkkaa sait?", "text",
+					surveyRepository.findBySurveyName("Etäopiskelu kokemukset").get(0)));
 
 			log.info("fetch all questions");
 			for (Question question : questionRepository.findAll()) {
