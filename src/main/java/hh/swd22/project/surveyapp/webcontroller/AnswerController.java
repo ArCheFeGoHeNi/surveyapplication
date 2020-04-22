@@ -24,6 +24,12 @@ public class AnswerController {
             answerRepository.save(new Answer(respondent, questionRepository.findById(questionID.get(i)).get(), answertextList.get(i)));
         }
     }
+    
+    @CrossOrigin
+    @RequestMapping(value = "/answer", method = RequestMethod.POST) // CrossOrigin for requests from another service, no parameters needed now - Arttu K, 09.04.2020.
+    public @ResponseBody Answer saveAnswerRest(@RequestBody Answer answer ) {
+    	return answerRepository.save(answer);
+    }
 
     @CrossOrigin
     @RequestMapping(value = "/answers", method = RequestMethod.GET) // CrossOrigin for requests from another service, no parameters needed now - Arttu K, 09.04.2020.

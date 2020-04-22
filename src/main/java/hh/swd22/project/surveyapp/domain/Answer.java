@@ -1,5 +1,7 @@
 package hh.swd22.project.surveyapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
 
@@ -11,21 +13,25 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long answerID;
 
-    @ManyToOne
-    @JsonManagedReference
-    private Respondent respondent;
+    private String answerText;
+    //@ManyToOne
+    //@JsonManagedReference //Parent Level
+    //@JsonBackReference
+    //private Respondent respondent;
 
     @ManyToOne
-    @JsonManagedReference
+    //@JsonIgnore
+    //@JsonManagedReference
+    @JsonBackReference //Child level
     private Question question;
     
-    private String answerText;
+    
 
     public Answer () {
     }
 
     public Answer(Respondent respondent, Question question, String answerText) {
-        this.respondent = respondent;
+        //this.respondent = respondent;
         this.question = question;
         this.answerText = answerText;
     }
@@ -38,13 +44,13 @@ public class Answer {
 		this.answerID = answerID;
 	}
 
-	public Respondent getRespondent() {
+/*	public Respondent getRespondent() {
 		return respondent;
 	}
 
 	public void setRespondent(Respondent respondent) {
 		this.respondent = respondent;
-	}
+	} */
 
 	public Question getQuestion() {
 		return question;

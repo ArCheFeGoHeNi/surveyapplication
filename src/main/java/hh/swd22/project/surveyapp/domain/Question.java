@@ -2,6 +2,7 @@
 package hh.swd22.project.surveyapp.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -18,12 +19,15 @@ public class Question {
     private Long questionID;
 
     @ManyToOne
-    @JsonManagedReference //Critical for stopping endless looping
+    //@JsonManagedReference //Critical for stopping endless looping
+    @JsonBackReference
     @JoinColumn
     public Survey survey;
 
-    @OneToMany
-    @JsonBackReference
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
+    @JsonIgnore
+    //@JsonBackReference
+    //@JsonManagedReference
     private List<Answer> answer;
 
     public Question() {

@@ -13,12 +13,13 @@ public class Respondent {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long RespondentID;
 
-    @OneToMany
-    @JsonBackReference
-    private List<Answer> answerList;
+    //@OneToMany
+    //@JsonBackReference
+    //@JsonManagedReference
+    //private List<Answer> answerList;
 
     public Respondent(List<Answer> answers) {
-        this.answerList = answers;
+        //this.answerList = answers;
     }
 
     public Respondent() {}
@@ -31,14 +32,14 @@ public class Respondent {
 		RespondentID = respondentID;
 	}
 
-	public List<Answer> getAnswerList() {
+/*	public List<Answer> getAnswerList() {
 		return answerList;
-	}
+	} 
 
 	public void setAnswerList(List<Answer> answerList) {
 		this.answerList = answerList;
 	}
     
-    
+*/    
 
 }

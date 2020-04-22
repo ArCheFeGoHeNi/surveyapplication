@@ -3,6 +3,7 @@ package hh.swd22.project.surveyapp.domain;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.List;
 
@@ -14,12 +15,14 @@ public class Survey {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long surveyId;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "survey")
-    @JsonBackReference
-    private List<Question> questionList;
-
     private String surveyName;
     private String surveyDesc;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "survey")
+    @JsonManagedReference //Parent level
+    //@JsonBackReference
+    private List<Question> questionList;
+
 
     public Survey() {
 
