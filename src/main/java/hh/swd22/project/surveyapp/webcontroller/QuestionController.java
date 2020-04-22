@@ -49,6 +49,7 @@ public class QuestionController {
     @RequestMapping(value = "/savequestion", method = RequestMethod.POST)
     public String saveQuestion(Question question) {
         questionRepository.save(question);
+        System.out.println(question.getSurvey());
         return "redirect:questionlist"; //Redirects to /questionlist endpoint
     }
 

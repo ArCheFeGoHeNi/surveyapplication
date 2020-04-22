@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Add a survey</title>
+
+    <link rel="stylesheet" href="/globalstyle.css/"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+
+<div id="wrapper">
+
+    <h3>Edit survey</h3>
+    <br>
+
+    <form th:object="${survey}" th:action="@{../savesurvey}" method="post" action="#">
+
+        <div>
+            <input type="hidden" th:field="*{surveyId}" readonly="readonly" />
+        </div>
+        <div>
+            <label for="surveyName">Name the survey</label>
+            <br>
+            <input type="text" id="surveyName" th:field="*{surveyName}">
+        </div>
+        <br>
+
+        <div>
+            <label for="surveyDesc">Write a description for the survey</label>
+            <br>
+            <input type="text" id="surveyDesc" th:field="*{surveyDesc}">
+        </div>
+        <br>
+
+        <button type="submit">Save</button>
+
+    </form>
+
+</div>
+
+</body>
+
+</html>

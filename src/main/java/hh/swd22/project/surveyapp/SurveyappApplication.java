@@ -43,6 +43,10 @@ public class SurveyappApplication {
 					surveyRepository.findBySurveyName("Opiskelu hyvinvointi").get(0)));
 			questionRepository.save(new Question("Miksi juot niin usein?", "text",
 					surveyRepository.findBySurveyName("Opiskelu hyvinvointi").get(0)));
+			questionRepository.save(new Question("Öö mee töihin?", "text",
+					surveyRepository.findBySurveyName("Työhyvinvointi").get(0)));
+			questionRepository.save(new Question("Pitäskö mennä töihin senkin yhteiskunnan loiseliö?", "text",
+					surveyRepository.findBySurveyName("Työhyvinvointi").get(0)));
 
 			log.info("fetch all questions");
 			for (Question question : questionRepository.findAll()) {

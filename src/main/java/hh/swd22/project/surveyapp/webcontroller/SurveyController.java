@@ -1,8 +1,6 @@
 package hh.swd22.project.surveyapp.webcontroller;
 
-import hh.swd22.project.surveyapp.domain.Answer; 
-import hh.swd22.project.surveyapp.domain.Survey;
-import hh.swd22.project.surveyapp.domain.SurveyRepository;
+import hh.swd22.project.surveyapp.domain.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,9 +16,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class SurveyController {
-	
+
     @Autowired
     private SurveyRepository surveyRepository;
+    @Autowired
+    private QuestionRepository questionRepository;
 
     //Mapping /surveylist endpoint to thymeleaf template surveylist.html
     @RequestMapping(value = "/surveylist", method = RequestMethod.GET)
@@ -42,19 +42,39 @@ public class SurveyController {
         surveyRepository.save(survey);
         return "redirect:surveylist"; //Redirects to /surveylist endpoint
     }
-    
-    
+
+    //Edit a single survey
+    @RequestMapping(value = "/editsurvey/{id}", method = RequestMethod.GET)
+    public String editSurvey(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("survey", surveyRepository.findById(id));
+        return "editsurvey";
+    }
+
+    //endpoint to a page where you can add questions to a survey
+    @RequestMapping(value = "/survey/{id}/addquestions", method = RequestMethod.GET)
+    public String addQuestionsToSurvey(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("thissurvey", surveyRepository.findById(id));
+        model.addAttribute("question", new Question());
+        model.addAttribute("questions", questionRepository.findAll());
+        return "addquestionstosurvey";
+    }
+
+
     //REST for Surveys.
-    
+
     @CrossOrigin
-    @RequestMapping(value = "/surveyslist", method = RequestMethod.GET) // CrossOrigin for requests from another service, no parameters needed now - Arttu K, 09.04.2020.
-    public @ResponseBody List<Survey> surveys() {
+    @RequestMapping(value = "/surveyslist", method = RequestMethod.GET)
+    // CrossOrigin for requests from another service, no parameters needed now - Arttu K, 09.04.2020.
+    public @ResponseBody
+    List<Survey> surveys() {
         return (List<Survey>) surveyRepository.findAll();
     }
-    
+
     @CrossOrigin
-    @RequestMapping(value = "/surveyslist/{id}", method = RequestMethod.GET) // CrossOrigin for requests from another service, no parameters needed now - Arttu K, 09.04.2020.
-    public @ResponseBody Optional <Survey> surveysById(@PathVariable Long id) {
+    @RequestMapping(value = "/surveyslist/{id}", method = RequestMethod.GET)
+    // CrossOrigin for requests from another service, no parameters needed now - Arttu K, 09.04.2020.
+    public @ResponseBody
+    Optional<Survey> surveysById(@PathVariable Long id) {
         return surveyRepository.findById(id);
     }
 }

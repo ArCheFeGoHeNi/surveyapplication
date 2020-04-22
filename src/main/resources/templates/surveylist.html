@@ -6,7 +6,7 @@
     <title>All surveys</title>
 
     <link rel="stylesheet" href="/globalstyle.css/"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
 </head>
 <body>
@@ -28,7 +28,8 @@
             <td th:text="${survey.surveyId}"></td>
             <td th:text="${survey.surveyName}"></td>
             <td th:text="${survey.surveyDesc}"></td>
-            <td> <button>Edit survey</button></td>
+            <td><a th:href="@{editsurvey/{id}(id=${survey.getSurveyId()})}">Edit</a>
+                <a th:href="@{survey/{id}/addquestions (id=${survey.getSurveyId()})}">Add questions</a></td>
         </tr>
     </table>
 
