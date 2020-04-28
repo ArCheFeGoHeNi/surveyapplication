@@ -71,7 +71,7 @@ public class SurveyappApplication {
 			for (Answer answer : answerRepository.findAll()) {
 				log.info(answer.toString());
 			}
-			System.out.println("lolzz");
+			System.out.println("Working as intended.");
 		};
 	}
 }

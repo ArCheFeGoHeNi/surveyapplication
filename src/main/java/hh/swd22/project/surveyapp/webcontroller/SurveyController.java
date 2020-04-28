@@ -56,19 +56,14 @@ public class SurveyController {
 
         Optional<Survey> surveyOptional = surveyRepository.findById(id);
 
-        Survey survey = surveyOptional.get();
+        Survey survey = surveyOptional.get(); // Getting rid of the Optional Wrapper.
 
         Long surveyId = survey.getSurveyId();
 
-        System.out.println(surveyOptional);
-
-        System.out.println(survey);
-
-        System.out.println(surveyId);
 
         model.addAttribute("thissurvey", survey);
         model.addAttribute("thissurveyId", surveyId);
-        model.addAttribute("question", new Question(survey));
+        model.addAttribute("question", new Question(survey)); // A question with a pre-determined Survey values. Adding two more values. Arttu K, 28.04.2020.
         model.addAttribute("questions", questionRepository.findAll());
         return "addquestionstosurvey";
     }
