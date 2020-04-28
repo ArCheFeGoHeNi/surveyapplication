@@ -28,7 +28,7 @@
     <br>
 
     <div>
-        <input th:field="*{survey}" th:value="${thissurvey}" readonly="readonly"/> <!--  // Does not work. -->
+        <input th:field="*{survey}" th:value="${thissurvey.get().getSurveyId()}" readonly="readonly"/> <!--  // Does not work. -->
     </div>
 
     <button type="submit">Save the question</button>
