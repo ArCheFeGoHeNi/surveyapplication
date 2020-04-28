@@ -53,8 +53,22 @@ public class SurveyController {
     //endpoint to a page where you can add questions to a survey
     @RequestMapping(value = "/survey/{id}/addquestions", method = RequestMethod.GET)
     public String addQuestionsToSurvey(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("thissurvey", surveyRepository.findById(id));
-        model.addAttribute("question", new Question());
+
+        Optional<Survey> surveyOptional = surveyRepository.findById(id);
+
+        Survey survey = surveyOptional.get();
+
+        Long surveyId = survey.getSurveyId();
+
+        System.out.println(surveyOptional);
+
+        System.out.println(survey);
+
+        System.out.println(surveyId);
+
+        model.addAttribute("thissurvey", survey);
+        model.addAttribute("thissurveyId", surveyId);
+        model.addAttribute("question", new Question(survey));
         model.addAttribute("questions", questionRepository.findAll());
         return "addquestionstosurvey";
     }

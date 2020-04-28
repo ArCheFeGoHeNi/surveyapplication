@@ -40,6 +40,10 @@ public class Question {
         this.survey = survey;
     }
 
+    public Question(Survey survey) {
+        this.survey = survey;
+    }
+
     public Long getQuestionID() {
         return questionID;
     }
