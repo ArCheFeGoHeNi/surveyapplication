@@ -7,7 +7,7 @@
 </head>
 <body>
 <a href="../../surveylist">Back</a>
-<h2 th:text="'Add questions to ' + ${thissurvey.get().getSurveyName()}"></h2>
+<h2 th:text="'Add questions to ' + ${thissurvey.getSurveyName()}"></h2>
 
 <form th:object="${question}" th:action="@{../../savequestion}" method="post">
 
@@ -28,7 +28,7 @@
     <br>
 
     <div>
-        <input th:field="*{survey}" th:value="${thissurvey}" readonly="readonly"/> <!--  // Does not work. -->
+        <input th:field="*{survey.surveyId}" readonly="readonly"/> <!--  // Does not work. -->
     </div>
 
     <button type="submit">Save the question</button>
@@ -38,7 +38,7 @@
 <h3>Survey's questions</h3>
 
 <div th:each="singlequestion : ${questions}">
-    <div th:if="${singlequestion.getSurvey().getSurveyId()} == ${thissurvey.get().getSurveyId()}">
+    <div th:if="${singlequestion.getSurvey().getSurveyId()} == ${thissurvey.getSurveyId()}">
         <a th:text="${singlequestion.getQuestionText()}"></a>
         <br>
         <a>--------------------------------------</a>
