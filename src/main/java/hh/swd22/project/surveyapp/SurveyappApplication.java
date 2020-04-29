@@ -28,9 +28,9 @@ public class SurveyappApplication {
 
 			respondentRepository.save(respondent);
 
-			surveyRepository.save(new Survey("Opiskelu hyvinvointi", "Kysely opiskelijoiden hyvinvoinnista"));
-			surveyRepository.save(new Survey("Työhyvinvointi", "Kysely työntekijöiden hyvinvoinnista"));
-			surveyRepository.save(new Survey("Etäopiskelu kokemukset", "Kysely etäopiskelu kokemuksista"));
+			surveyRepository.save(new Survey("Opiskeluhyvinvointi", "Kysely opiskeluhyvinvoinnista"));
+			surveyRepository.save(new Survey("Työhyvinvointi", "Kysely työhyvinvoinnista"));
+			surveyRepository.save(new Survey("Etäopiskelukokemukset", "Kysely etäopiskelukokemuksista"));
 
 			log.info("fetch all surveys");
 			for (Survey survey : surveyRepository.findAll()) {
