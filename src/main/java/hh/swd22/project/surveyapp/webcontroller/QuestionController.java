@@ -43,7 +43,7 @@ public class QuestionController {
         model.addAttribute("question", new Question());
         model.addAttribute("surveys", surveyRepository.findAll());
         return "addquestion"; //addquestion.html
-    }
+}
 
     //Endpoing /save saves the song to the database and redirects to /questionlist endpoint
     @RequestMapping(value = "/savequestion", method = RequestMethod.POST)
