@@ -1,6 +1,9 @@
 package hh.swd22.project.surveyapp.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import org.hibernate.annotations.Generated;
 
 import javax.persistence.*;
@@ -14,18 +17,29 @@ public class MultiAnswerOption {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long multiAnswerOptionsId;
 
+    private String answerOption;
+    
     @ManyToOne
+    //@JsonIgnore
+    //@JsonManagedReference
     @JsonBackReference
     @JoinColumn
-    private MultiQuestion multiQuestion;
+    private Question question;
 
-    private String answerOption;
+    
 
     public MultiAnswerOption() {
 
     }
+    
+    public MultiAnswerOption(String answerOption, Question question) {
+		super();
+		this.answerOption = answerOption;
+		this.question = question;
+		
+	}
 
-    public MultiAnswerOption(String answerOption) {
+	public MultiAnswerOption(String answerOption) {
         this.answerOption = answerOption;
     }
 
@@ -37,12 +51,12 @@ public class MultiAnswerOption {
 		this.multiAnswerOptionsId = multiAnswerOptionsId;
 	}
 
-	public MultiQuestion getMultiQuestion() {
-		return multiQuestion;
+	public Question getQuestion() {
+		return question;
 	}
 
-	public void setMultiQuestion(MultiQuestion multiQuestion) {
-		this.multiQuestion = multiQuestion;
+	public void setQuestion(Question question) {
+		this.question = question;
 	}
 
 	public String getAnswerOption() {
@@ -52,7 +66,8 @@ public class MultiAnswerOption {
 	public void setAnswerOption(String answerOption) {
 		this.answerOption = answerOption;
 	}
-    
+
+	
     
 
 }

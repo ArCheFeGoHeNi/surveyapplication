@@ -23,9 +23,6 @@ public class Survey {
     //@JsonBackReference
     private List<Question> questionList;
 
-    @OneToMany
-    @JsonManagedReference
-    private List<MultiQuestion> multiQuestionList;
 
     public Survey() {
 
@@ -42,40 +39,38 @@ public class Survey {
     }
 
     public Long getSurveyId() {
-        return surveyId;
-    }
+		return surveyId;
+	}
 
-    public void setSurveyId(Long surveyId) {
-        this.surveyId = surveyId;
-    }
+	public void setSurveyId(Long surveyId) {
+		this.surveyId = surveyId;
+	}
 
-    public List<Question> getQuestionList() {
-        return questionList;
-    }
+	public String getSurveyName() {
+		return surveyName;
+	}
 
-    public void setQuestionList(List<Question> questionList) {
-        this.questionList = questionList;
-    }
+	public void setSurveyName(String surveyName) {
+		this.surveyName = surveyName;
+	}
 
-    public String getSurveyName() {
-        return surveyName;
-    }
+	public String getSurveyDesc() {
+		return surveyDesc;
+	}
 
-    public void setSurveyName(String surveyDesc) {
-        this.surveyName = surveyDesc;
-    }
+	public void setSurveyDesc(String surveyDesc) {
+		this.surveyDesc = surveyDesc;
+	}
 
-    public String getSurveyDesc() {
-        return surveyDesc;
-    }
+	public List<Question> getQuestionList() {
+		return questionList;
+	}
 
-    public void setSurveyDesc(String surveyDesc) {
-        this.surveyDesc = surveyDesc;
-    }
-    
-    
+	public void setQuestionList(List<Question> questionList) {
+		this.questionList = questionList;
+	}
 
-    @Override
+	@Override
     public String toString() {
         return surveyName;
     }

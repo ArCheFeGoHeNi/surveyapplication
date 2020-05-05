@@ -22,7 +22,8 @@ public class SurveyappApplication {
 										SurveyRepository surveyRepository,
 										AnswerRepository answerRepository,
 										RespondentRepository respondentRepository,
-										MultiQuestionRepository multiRepo) {
+										MultiAnswerOptionRepository multiRepository
+										) {
 		return (args) -> {
 
 			Respondent respondent = new Respondent();
@@ -52,6 +53,13 @@ public class SurveyappApplication {
 					surveyRepository.findBySurveyName("Etäopiskelukokemukset").get(0)));
 			questionRepository.save(new Question("Minkälaista palkkaa sait?", "text",
 					surveyRepository.findBySurveyName("Etäopiskelukokemukset").get(0)));
+			questionRepository.save(new Question("Mikä seuraavista on parasta?", "multiplechoice",
+					surveyRepository.findBySurveyName("Etäopiskelukokemukset").get(0)));
+			
+			multiRepository.save(new MultiAnswerOption("Kesä", questionRepository.findByQuestionText("Mikä seuraavista on parasta?").get(0)));
+			multiRepository.save(new MultiAnswerOption("Talvi", questionRepository.findByQuestionText("Mikä seuraavista on parasta?").get(0)));
+			multiRepository.save(new MultiAnswerOption("Syksy", questionRepository.findByQuestionText("Mikä seuraavista on parasta?").get(0)));
+			multiRepository.save(new MultiAnswerOption("Kevät", questionRepository.findByQuestionText("Mikä seuraavista on parasta?").get(0)));
 
 			log.info("fetch all questions");
 			for (Question question : questionRepository.findAll()) {

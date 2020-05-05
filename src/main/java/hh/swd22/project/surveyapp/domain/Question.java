@@ -13,6 +13,11 @@ public class Question {
 
     private String questionText;
     private String questionType;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
+    @JsonManagedReference
+    //@JsonBackReference
+    private List<MultiAnswerOption> multiAnswerOptions;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,7 +30,7 @@ public class Question {
     public Survey survey;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
-    @JsonIgnore
+    //@JsonIgnore
     //@JsonBackReference
     //@JsonManagedReference
     private List<Answer> answer;
@@ -44,37 +49,45 @@ public class Question {
         this.survey = survey;
     }
 
-    public Long getQuestionID() {
-        return questionID;
-    }
+	public String getQuestionText() {
+		return questionText;
+	}
 
-    public void setQuestionID(Long questionID) {
-        this.questionID = questionID;
-    }
+	public void setQuestionText(String questionText) {
+		this.questionText = questionText;
+	}
 
-    public String getQuestionText() {
-        return questionText;
-    }
+	public String getQuestionType() {
+		return questionType;
+	}
 
-    public void setQuestionText(String question) {
-        this.questionText = question;
-    }
+	public void setQuestionType(String questionType) {
+		this.questionType = questionType;
+	}
 
-    public String getQuestionType() {
-        return questionType;
-    }
+	public List<MultiAnswerOption> getMultiAnswerOptions() {
+		return multiAnswerOptions;
+	}
 
-    public void setQuestionType(String questiontype) {
-        this.questionType = questiontype;
-    }
+	public void setMultiAnswerOptions(List<MultiAnswerOption> multiAnswerOptions) {
+		this.multiAnswerOptions = multiAnswerOptions;
+	}
 
-    public Survey getSurvey() {
-        return survey;
-    }
+	public Long getQuestionID() {
+		return questionID;
+	}
 
-    public void setSurvey(Survey survey) {
-        this.survey = survey;
-    }
+	public void setQuestionID(Long questionID) {
+		this.questionID = questionID;
+	}
+
+	public Survey getSurvey() {
+		return survey;
+	}
+
+	public void setSurvey(Survey survey) {
+		this.survey = survey;
+	}
 
 	public List<Answer> getAnswer() {
 		return answer;
@@ -83,6 +96,6 @@ public class Question {
 	public void setAnswer(List<Answer> answer) {
 		this.answer = answer;
 	}
-    
 
+  
 }
