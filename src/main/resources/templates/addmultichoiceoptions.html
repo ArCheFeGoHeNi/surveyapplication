@@ -16,33 +16,13 @@
     <h3>Add a question</h3>
     <br>
 
-    <form th:object="${question}" th:action="@{savequestion}" method="post">
-
+    <form th:object="${multiOption}" th:action="@{/addmultioptions}" method="post">
         <div>
-            <label for="question">The question</label>
-            <br>
-            <input type="text" id="question" th:field="*{questionText}">
-        </div>
-        <br>
-
-        <div>
-            <select id="questiontype" th:field="*{questionType}">
+            <select id="questiontype" th:field="${multiChoiceQuestions}">
                 <option value="choose">Choose question type</option>
                 <option th:value="text">Text field question</option>
                 <option th:value="multiplechoice">Multiple choice question</option>
             </select>
-        </div>
-        <br>
-        <div>
-            <label for="survey">Which survey is this question a part of:</label>
-            <br>
-            <select id="survey" th:field="*{survey}">
-                <option value="Choose">Choose the survey</option>
-                <option th:each="survey : ${surveys}"
-                        th:value="${survey.surveyId}"
-                        th:text="${survey.surveyName}"></option>
-            </select>
-
         </div>
         <br>
 

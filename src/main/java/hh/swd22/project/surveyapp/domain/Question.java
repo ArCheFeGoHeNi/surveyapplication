@@ -73,6 +73,10 @@ public class Question {
 		this.multiAnswerOptions = multiAnswerOptions;
 	}
 
+	public void setMultiAnswerOption(String multiAnswerOption) {
+    	this.multiAnswerOptions.add(new MultiAnswerOption(multiAnswerOption));
+	}
+
 	public Long getQuestionID() {
 		return questionID;
 	}
