@@ -38,19 +38,19 @@ public class SurveyappApplication {
 			}
 
 			questionRepository.save(new Question("Käytkö täysipäiväisesti töissä?", "text",
-					surveyRepository.findBySurveyName("Opiskelu hyvinvointi").get(0)));
+					surveyRepository.findBySurveyName("Opiskeluhyvinvointi").get(0)));
 			questionRepository.save(new Question("Montako kertaa viikossa juot alkoholia?", "text",
-					surveyRepository.findBySurveyName("Opiskelu hyvinvointi").get(0)));
+					surveyRepository.findBySurveyName("Opiskeluhyvinvointi").get(0)));
 			questionRepository.save(new Question("Miksi juot niin usein?", "text",
-					surveyRepository.findBySurveyName("Opiskelu hyvinvointi").get(0)));
+					surveyRepository.findBySurveyName("Opiskeluhyvinvointi").get(0)));
 			questionRepository.save(new Question("Öö mee töihin?", "text",
 					surveyRepository.findBySurveyName("Työhyvinvointi").get(0)));
 			questionRepository.save(new Question("Pitäskö mennä töihin senkin yhteiskunnan loiseliö?", "text",
 					surveyRepository.findBySurveyName("Työhyvinvointi").get(0)));
 			questionRepository.save(new Question("Kauan olet ollut ulkomailla opiskelemassa?", "text",
-					surveyRepository.findBySurveyName("Etäopiskelu kokemukset").get(0)));
+					surveyRepository.findBySurveyName("Etäopiskelukokemukset").get(0)));
 			questionRepository.save(new Question("Minkälaista palkkaa sait?", "text",
-					surveyRepository.findBySurveyName("Etäopiskelu kokemukset").get(0)));
+					surveyRepository.findBySurveyName("Etäopiskelukokemukset").get(0)));
 
 			log.info("fetch all questions");
 			for (Question question : questionRepository.findAll()) {
