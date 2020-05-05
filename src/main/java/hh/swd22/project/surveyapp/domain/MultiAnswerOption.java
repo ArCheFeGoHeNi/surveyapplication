@@ -29,4 +29,30 @@ public class MultiAnswerOption {
         this.answerOption = answerOption;
     }
 
+	public Long getMultiAnswerOptionsId() {
+		return multiAnswerOptionsId;
+	}
+
+	public void setMultiAnswerOptionsId(Long multiAnswerOptionsId) {
+		this.multiAnswerOptionsId = multiAnswerOptionsId;
+	}
+
+	public MultiQuestion getMultiQuestion() {
+		return multiQuestion;
+	}
+
+	public void setMultiQuestion(MultiQuestion multiQuestion) {
+		this.multiQuestion = multiQuestion;
+	}
+
+	public String getAnswerOption() {
+		return answerOption;
+	}
+
+	public void setAnswerOption(String answerOption) {
+		this.answerOption = answerOption;
+	}
+    
+    
+
 }

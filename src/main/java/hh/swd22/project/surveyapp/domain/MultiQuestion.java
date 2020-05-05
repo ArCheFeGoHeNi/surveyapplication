@@ -35,7 +35,17 @@ public class MultiQuestion {
         this.questionText = questionText;
     }
 
-    public String getQuestionText() {
+    public MultiQuestion(Long multiQuestionId, String questionText, List<MultiAnswerOption> multiAnswerOptions,
+			Survey survey, List<Answer> answerList) {
+		super();
+		MultiQuestionId = multiQuestionId;
+		this.questionText = questionText;
+		this.multiAnswerOptions = multiAnswerOptions;
+		this.survey = survey;
+		this.answerList = answerList;
+	}
+
+	public String getQuestionText() {
         return questionText;
     }
 

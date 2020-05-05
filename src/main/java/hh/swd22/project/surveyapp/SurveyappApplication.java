@@ -21,7 +21,8 @@ public class SurveyappApplication {
 	public CommandLineRunner surveyDemo(QuestionRepository questionRepository,
 										SurveyRepository surveyRepository,
 										AnswerRepository answerRepository,
-										RespondentRepository respondentRepository) {
+										RespondentRepository respondentRepository,
+										MultiQuestionRepository multiRepo) {
 		return (args) -> {
 
 			Respondent respondent = new Respondent();
@@ -66,6 +67,8 @@ public class SurveyappApplication {
 			answerRepository.save(new Answer(respondent,
 					questionRepository.findByQuestionText("Miksi juot niin usein?").get(0),
 					"En ymmärrä ;_;"));
+			
+			//multiRepo.save(new MultiQuestion("LOLLERO."));
 
 			log.info("fetch all answers");
 			for (Answer answer : answerRepository.findAll()) {
