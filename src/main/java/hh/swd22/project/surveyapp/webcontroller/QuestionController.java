@@ -1,5 +1,6 @@
 package hh.swd22.project.surveyapp.webcontroller;
 
+import hh.swd22.project.surveyapp.domain.MultiQuestion;
 import hh.swd22.project.surveyapp.domain.Question;
 import hh.swd22.project.surveyapp.domain.QuestionRepository;
 import hh.swd22.project.surveyapp.domain.SurveyRepository;
@@ -44,6 +45,14 @@ public class QuestionController {
         model.addAttribute("surveys", surveyRepository.findAll());
         return "addquestion"; //addquestion.html
 }
+
+    //Mapping endpoint /addmultiquestion to addmultiquestion.html thymeleaf template in /resources/templates/
+    @RequestMapping(value = "/addmultiquestion", method = RequestMethod.GET)
+    public String addMultiQuestion(Model model) {
+        model.addAttribute("question", new MultiQuestion());
+        model.addAttribute("surveys", surveyRepository.findAll());
+        return "addmultiquestion"; //addmultiquestion.html
+    }
 
     //Endpoing /save saves the song to the database and redirects to /questionlist endpoint
     @RequestMapping(value = "/savequestion", method = RequestMethod.POST)

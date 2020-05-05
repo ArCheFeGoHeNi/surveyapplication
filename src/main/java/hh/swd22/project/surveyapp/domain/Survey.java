@@ -23,6 +23,9 @@ public class Survey {
     //@JsonBackReference
     private List<Question> questionList;
 
+    @OneToMany
+    @JsonManagedReference
+    private List<MultiQuestion> multiQuestionList;
 
     public Survey() {
 
