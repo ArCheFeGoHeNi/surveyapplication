@@ -1,5 +1,6 @@
 package hh.swd22.project.surveyapp.webcontroller;
 
+import hh.swd22.project.surveyapp.domain.MultiAnswerOption;
 import hh.swd22.project.surveyapp.domain.Question;
 import hh.swd22.project.surveyapp.domain.QuestionRepository;
 import hh.swd22.project.surveyapp.domain.SurveyRepository;
@@ -44,6 +45,15 @@ public class QuestionController {
         model.addAttribute("surveys", surveyRepository.findAll());
         return "addquestion"; //addquestion.html
 }
+
+    //Mapping endpoint /addquestion to addquestion.html thymeleaf template in /resources/templates/
+    @RequestMapping(value = "/addmultioptions", method = RequestMethod.GET)
+    public String addMultiOptions(Model model) {
+        model.addAttribute("multiOption", new MultiAnswerOption());
+        model.addAttribute("multiChoiceQuestions", questionRepository.findByQuestionType("multiplechoice"));
+        return "addquestion"; //addquestion.html
+    }
+
 
     //Endpoing /save saves the song to the database and redirects to /questionlist endpoint
     @RequestMapping(value = "/savequestion", method = RequestMethod.POST)

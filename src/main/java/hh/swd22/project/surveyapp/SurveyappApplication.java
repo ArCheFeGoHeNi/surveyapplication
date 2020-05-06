@@ -21,7 +21,9 @@ public class SurveyappApplication {
 	public CommandLineRunner surveyDemo(QuestionRepository questionRepository,
 										SurveyRepository surveyRepository,
 										AnswerRepository answerRepository,
-										RespondentRepository respondentRepository) {
+										RespondentRepository respondentRepository,
+										MultiAnswerOptionRepository multiRepository
+										) {
 		return (args) -> {
 
 			Respondent respondent = new Respondent();
@@ -51,6 +53,13 @@ public class SurveyappApplication {
 					surveyRepository.findBySurveyName("Etäopiskelukokemukset").get(0)));
 			questionRepository.save(new Question("Minkälaista palkkaa sait?", "text",
 					surveyRepository.findBySurveyName("Etäopiskelukokemukset").get(0)));
+			questionRepository.save(new Question("Mikä seuraavista on parasta?", "multiplechoice",
+					surveyRepository.findBySurveyName("Etäopiskelukokemukset").get(0)));
+			
+			multiRepository.save(new MultiAnswerOption("Kesä", questionRepository.findByQuestionText("Mikä seuraavista on parasta?").get(0)));
+			multiRepository.save(new MultiAnswerOption("Talvi", questionRepository.findByQuestionText("Mikä seuraavista on parasta?").get(0)));
+			multiRepository.save(new MultiAnswerOption("Syksy", questionRepository.findByQuestionText("Mikä seuraavista on parasta?").get(0)));
+			multiRepository.save(new MultiAnswerOption("Kevät", questionRepository.findByQuestionText("Mikä seuraavista on parasta?").get(0)));
 
 			log.info("fetch all questions");
 			for (Question question : questionRepository.findAll()) {
@@ -66,6 +75,8 @@ public class SurveyappApplication {
 			answerRepository.save(new Answer(respondent,
 					questionRepository.findByQuestionText("Miksi juot niin usein?").get(0),
 					"En ymmärrä ;_;"));
+			
+			//multiRepo.save(new MultiQuestion("LOLLERO."));
 
 			log.info("fetch all answers");
 			for (Answer answer : answerRepository.findAll()) {
