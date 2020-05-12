@@ -18,31 +18,64 @@
 	</p>
 	<pre><code>[
 {
+questionID: 5,
 questionText: "Käytkö täysipäiväisesti töissä?",
 questionType: "text",
-questionID: 4,
-survey: {
-surveyId: 1,
-surveyName: "Opiskelu hyvinvointi"
+multiAnswerOptions: [ ],
+answer: [
+{
+answerID: 17,
+answerText: "Kyllä käyn"
 }
+]
 },
 {
+questionID: 6,
 questionText: "Montako kertaa viikossa juot alkoholia?",
 questionType: "text",
-questionID: 5,
-survey: {
-surveyId: 1,
-surveyName: "Opiskelu hyvinvointi"
+multiAnswerOptions: [ ],
+answer: [
+{
+answerID: 18,
+answerText: "Muutaman kerran"
 }
+]
 },
 {
+questionID: 7,
 questionText: "Miksi juot niin usein?",
 questionType: "text",
-questionID: 6,
-survey: {
-surveyId: 1,
-surveyName: "Opiskelu hyvinvointi"
+multiAnswerOptions: [ ],
+answer: [
+{
+answerID: 19,
+answerText: "En ymmärrä ;_;"
 }
+]
+},
+{
+questionID: 12,
+questionText: "Mikä seuraavista on parasta?",
+questionType: "multiplechoice",
+multiAnswerOptions: [
+{
+multiAnswerOptionsId: 13,
+answerOption: "Kesä"
+},
+{
+multiAnswerOptionsId: 14,
+answerOption: "Talvi"
+},
+{
+multiAnswerOptionsId: 15,
+answerOption: "Syksy"
+},
+{
+multiAnswerOptionsId: 16,
+answerOption: "Kevät"
+}
+],
+answer: [ ]
 }
 ]</code></pre>
 
@@ -55,13 +88,16 @@ surveyName: "Opiskelu hyvinvointi"
 		<strong>JSON Example:</strong>
 	</p>
 	<pre><code>{
-questionText: "Montako kertaa viikossa juot alkoholia?",
-questionType: "text",
 questionID: 5,
-survey: {
-surveyId: 1,
-surveyName: "Opiskelu hyvinvointi"
+questionText: "Käytkö täysipäiväisesti töissä?",
+questionType: "text",
+multiAnswerOptions: [ ],
+answer: [
+{
+answerID: 17,
+answerText: "Kyllä käyn"
 }
+]
 }</code></pre>
 	<h2>New Question with POST</h2>
 	<p>
@@ -72,16 +108,15 @@ surveyName: "Opiskelu hyvinvointi"
 		<strong>JSON Example:</strong>
 	</p>
 	<pre><code>{
-questionText: "Kuinka usein olet väsynyt viikon aikana?",
-questionType: "text",
-questionID: 5, // Not needed - autoincrement is on this time around.
-survey: {
-surveyId: 1,
-surveyName: "Opiskelu hyvinvointi"
+"questionText": "Käytkö täysipäiväisesti töissä?",
+"questionType": "text",
+"survey": {
+"surveyId": 2
+}
 }</code></pre>
 
 
-<h2>All Surveys</h2>
+<h2>All Surveys (All data needed for Front-End serialized here)</h2>
 	<p>
 		<strong>Method:</strong> GET <strong>Endpoint:</strong> <strong><a
 			href="/surveyslist">/surveyslist</a></strong>
@@ -92,23 +127,119 @@ surveyName: "Opiskelu hyvinvointi"
 	<pre><code>[
 {
 surveyId: 2,
-surveyName: "Opiskelu hyvinvointi",
-surveyDesc: "Kysely opiskelijoiden hyvinvoinnista"
+surveyName: "Opiskeluhyvinvointi",
+surveyDesc: "Kysely opiskeluhyvinvoinnista",
+questionList: [
+{
+questionID: 5,
+questionText: "Käytkö täysipäiväisesti töissä?",
+questionType: "text",
+multiAnswerOptions: [ ],
+answer: [
+{
+answerID: 17,
+answerText: "Kyllä käyn"
+}
+]
+},
+{
+questionID: 6,
+questionText: "Montako kertaa viikossa juot alkoholia?",
+questionType: "text",
+multiAnswerOptions: [ ],
+answer: [
+{
+answerID: 18,
+answerText: "Muutaman kerran"
+}
+]
+},
+{
+questionID: 7,
+questionText: "Miksi juot niin usein?",
+questionType: "text",
+multiAnswerOptions: [ ],
+answer: [
+{
+answerID: 19,
+answerText: "En ymmärrä ;_;"
+}
+]
+},
+{
+questionID: 20,
+questionText: "Kaytko taysipaivaisesti toissa?",
+questionType: "text",
+multiAnswerOptions: [ ],
+answer: [ ]
+}
+]
 },
 {
 surveyId: 3,
 surveyName: "Työhyvinvointi",
-surveyDesc: "Kysely työntekijöiden hyvinvoinnista"
+surveyDesc: "Kysely työhyvinvoinnista",
+questionList: [
+{
+questionID: 8,
+questionText: "Öö mee töihin?",
+questionType: "text",
+multiAnswerOptions: [ ],
+answer: [ ]
+},
+{
+questionID: 9,
+questionText: "Pitäskö mennä töihin senkin yhteiskunnan loiseliö?",
+questionType: "text",
+multiAnswerOptions: [ ],
+answer: [ ]
+}
+]
 },
 {
 surveyId: 4,
-surveyName: "Etäopiskelu kokemukset",
-surveyDesc: "Kysely etäopiskelu kokemuksista"
+surveyName: "Etäopiskelukokemukset",
+surveyDesc: "Kysely etäopiskelukokemuksista",
+questionList: [
+{
+questionID: 10,
+questionText: "Kauan olet ollut ulkomailla opiskelemassa?",
+questionType: "text",
+multiAnswerOptions: [ ],
+answer: [ ]
 },
 {
-surveyId: 11,
-surveyName: "Lollero",
-surveyDesc: "Lollero"
+questionID: 11,
+questionText: "Minkälaista palkkaa sait?",
+questionType: "text",
+multiAnswerOptions: [ ],
+answer: [ ]
+},
+{
+questionID: 12,
+questionText: "Mikä seuraavista on parasta?",
+questionType: "multiplechoice",
+multiAnswerOptions: [
+{
+multiAnswerOptionsId: 13,
+answerOption: "Kesä"
+},
+{
+multiAnswerOptionsId: 14,
+answerOption: "Talvi"
+},
+{
+multiAnswerOptionsId: 15,
+answerOption: "Syksy"
+},
+{
+multiAnswerOptionsId: 16,
+answerOption: "Kevät"
+}
+],
+answer: [ ]
+}
+]
 }
 ]
 	</code></pre>
@@ -124,9 +255,25 @@ surveyDesc: "Lollero"
 	<pre><code>{
 surveyId: 3,
 surveyName: "Työhyvinvointi",
-surveyDesc: "Kysely työntekijöiden hyvinvoinnista"
+surveyDesc: "Kysely työhyvinvoinnista",
+questionList: [
+{
+questionID: 8,
+questionText: "Öö mee töihin?",
+questionType: "text",
+multiAnswerOptions: [ ],
+answer: [ ]
+},
+{
+questionID: 9,
+questionText: "Pitäskö mennä töihin senkin yhteiskunnan loiseliö?",
+questionType: "text",
+multiAnswerOptions: [ ],
+answer: [ ]
+}
+]
 }</code></pre>
-<h2>New Survey with POST</h2>
+<h2>New Survey with POST (NOT TESTED, obsolete, handled in Back-End.)</h2>
 	<p>
 		<strong>POST </strong> <strong> /surveyslist (WITH POST)</strong> (Test
 		with <a href="https://www.getpostman.com/" target="_blank">PostMan</a>/etc.)
@@ -149,48 +296,15 @@ surveyDesc: "Kysely työntekijöiden hyvinvoinnista"
 	</p>
 	<pre><code>[
 {
-answerID: 8,
-respondent: { },
-question: {
-questionText: "Käytkö täysipäiväisesti töissä?",
-questionType: "text",
-questionID: 5,
-survey: {
-surveyId: 2,
-surveyName: "Opiskelu hyvinvointi",
-surveyDesc: "Kysely opiskelijoiden hyvinvoinnista"
-}
-},
+answerID: 17,
 answerText: "Kyllä käyn"
 },
 {
-answerID: 9,
-respondent: { },
-question: {
-questionText: "Montako kertaa viikossa juot alkoholia?",
-questionType: "text",
-questionID: 6,
-survey: {
-surveyId: 2,
-surveyName: "Opiskelu hyvinvointi",
-surveyDesc: "Kysely opiskelijoiden hyvinvoinnista"
-}
-},
+answerID: 18,
 answerText: "Muutaman kerran"
 },
 {
-answerID: 10,
-respondent: { },
-question: {
-questionText: "Miksi juot niin usein?",
-questionType: "text",
-questionID: 7,
-survey: {
-surveyId: 2,
-surveyName: "Opiskelu hyvinvointi",
-surveyDesc: "Kysely opiskelijoiden hyvinvoinnista"
-}
-},
+answerID: 19,
 answerText: "En ymmärrä ;_;"
 }
 ]
@@ -199,49 +313,29 @@ answerText: "En ymmärrä ;_;"
 	<h2>Answers By Id</h2>
 	<p>
 		<strong>GET </strong><strong> /answers/{id} </strong> <strong>
-		<a href="/answers/8">/answers/8</a></strong>
+		<a href="/answers/18">/answers/18</a></strong>
 	</p>
 	<p>
 		<strong>JSON Example:</strong>
 	</p>
 	<pre><code>{
-answerID: 8,
-respondent: { },
-question: {
-questionText: "Käytkö täysipäiväisesti töissä?",
-questionType: "text",
-questionID: 5,
-survey: {
-surveyId: 2,
-surveyName: "Opiskelu hyvinvointi",
-surveyDesc: "Kysely opiskelijoiden hyvinvoinnista"
-}
-},
-answerText: "Kyllä käyn"
+answerID: 18,
+answerText: "Muutaman kerran"
 }</code></pre>
 
-<h2>New Answer with POST</h2>
+<h2>New Answer with POST (USED in Front-End, POST ENDPOINT)</h2>
 	<p>
-		<strong>POST </strong> <strong> /answers (WITH POST)</strong> (Test
+		<strong>POST </strong> <strong> /answer (WITH POST)</strong> (Test
 		with <a href="https://www.getpostman.com/" target="_blank">PostMan</a>/etc.)
 	</p>
 	<p>
 		<strong>JSON Example:</strong>
 	</p>
 	<pre><code>{
-answerID: 8,
-respondent: { },
-question: {
-questionText: "Käytkö täysipäiväisesti töissä?",
-questionType: "text",
-questionID: 5,
-survey: {
-surveyId: 2,
-surveyName: "Opiskelu hyvinvointi",
-surveyDesc: "Kysely opiskelijoiden hyvinvoinnista"
+"answerText": "Muutaman kerran",
+"question": {
+"questionID": 5
 }
-},
-answerText: "Kyllä käyn"
-} // PLACEHOLDER</code></pre>
+}</code></pre>
 </body>
 </html>

@@ -10,6 +10,10 @@ import java.util.List;
 
 @Entity //Entity Class
 public class Question {
+	
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long questionID;
 
     private String questionText;
     private String questionType;
@@ -18,10 +22,6 @@ public class Question {
     @JsonManagedReference
     //@JsonBackReference
     private List<MultiAnswerOption> multiAnswerOptions;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long questionID;
 
     @ManyToOne
     //@JsonManagedReference //Critical for stopping endless looping
