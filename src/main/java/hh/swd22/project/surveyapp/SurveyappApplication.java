@@ -55,11 +55,20 @@ public class SurveyappApplication {
 					surveyRepository.findBySurveyName("Etäopiskelukokemukset").get(0)));
 			questionRepository.save(new Question("Mikä seuraavista on parasta?", "multiplechoice",
 					surveyRepository.findBySurveyName("Etäopiskelukokemukset").get(0)));
+			questionRepository.save(new Question("Mikä on paras safka päivän aikana?", "multiplechoice",
+					surveyRepository.findBySurveyName("Etäopiskelukokemukset").get(0)));
 			
 			multiRepository.save(new MultiAnswerOption("Kesä", questionRepository.findByQuestionText("Mikä seuraavista on parasta?").get(0)));
 			multiRepository.save(new MultiAnswerOption("Talvi", questionRepository.findByQuestionText("Mikä seuraavista on parasta?").get(0)));
 			multiRepository.save(new MultiAnswerOption("Syksy", questionRepository.findByQuestionText("Mikä seuraavista on parasta?").get(0)));
 			multiRepository.save(new MultiAnswerOption("Kevät", questionRepository.findByQuestionText("Mikä seuraavista on parasta?").get(0)));
+
+			multiRepository.save(new MultiAnswerOption("Aamupala", questionRepository.findByQuestionText("Mikä on paras safka päivän aikana?").get(0)));
+			multiRepository.save(new MultiAnswerOption("Välipala", questionRepository.findByQuestionText("Mikä on paras safka päivän aikana?").get(0)));
+			multiRepository.save(new MultiAnswerOption("Haab", questionRepository.findByQuestionText("Mikä on paras safka päivän aikana?").get(0)));
+			multiRepository.save(new MultiAnswerOption("Päivällinen", questionRepository.findByQuestionText("Mikä on paras safka päivän aikana?").get(0)));
+			multiRepository.save(new MultiAnswerOption("Illallinen", questionRepository.findByQuestionText("Mikä on paras safka päivän aikana?").get(0)));
+			multiRepository.save(new MultiAnswerOption("Yöllinen", questionRepository.findByQuestionText("Mikä on paras safka päivän aikana?").get(0)));
 
 			log.info("fetch all questions");
 			for (Question question : questionRepository.findAll()) {
