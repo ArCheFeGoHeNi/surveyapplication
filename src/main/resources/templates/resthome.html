@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html xmlns:th="www.thymeleaf.com">
 <head>
-<meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>REST Home Page (SurveyApp)</title>
+
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-indigo.min.css" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+
+	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+	<meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>REST Home Page (SurveyApp)</title>
 </head>
 <body>
 <h1>REST Home Page</h1>
 
-	<h2>All Questions</h2>
-	<p>
-		<strong>Method:</strong> GET <strong>Endpoint:</strong> <strong><a
-			href="/questions">/questions</a></strong>
-	</p>
-	<p>
-		<strong>JSON Example:</strong>
-	</p>
-	<pre><code>[
+<h2>All Questions</h2>
+<p>
+    <strong>Method:</strong> GET <strong>Endpoint:</strong> <strong><a
+        href="/questions">/questions</a></strong>
+</p>
+<p>
+    <strong>JSON Example:</strong>
+</p>
+<pre><code>[
 {
 questionID: 5,
 questionText: "Käytkö täysipäiväisesti töissä?",
@@ -79,15 +85,15 @@ answer: [ ]
 }
 ]</code></pre>
 
-	<h2>Question By Id</h2>
-	<p>
-		<strong>GET </strong><strong> /questions/{id} </strong> <strong>
-		<a href="/questions/5">/questions/5</a></strong>
-	</p>
-	<p>
-		<strong>JSON Example:</strong>
-	</p>
-	<pre><code>{
+<h2>Question By Id</h2>
+<p>
+    <strong>GET </strong><strong> /questions/{id} </strong> <strong>
+    <a href="/questions/5">/questions/5</a></strong>
+</p>
+<p>
+    <strong>JSON Example:</strong>
+</p>
+<pre><code>{
 questionID: 5,
 questionText: "Käytkö täysipäiväisesti töissä?",
 questionType: "text",
@@ -99,15 +105,15 @@ answerText: "Kyllä käyn"
 }
 ]
 }</code></pre>
-	<h2>New Question with POST</h2>
-	<p>
-		<strong>POST </strong> <strong> /questions (WITH POST)</strong> (Test
-		with <a href="https://www.getpostman.com/" target="_blank">PostMan</a>/etc.)
-	</p>
-	<p>
-		<strong>JSON Example:</strong>
-	</p>
-	<pre><code>{
+<h2>New Question with POST</h2>
+<p>
+    <strong>POST </strong> <strong> /questions (WITH POST)</strong> (Test
+    with <a href="https://www.getpostman.com/" target="_blank">PostMan</a>/etc.)
+</p>
+<p>
+    <strong>JSON Example:</strong>
+</p>
+<pre><code>{
 "questionText": "Käytkö täysipäiväisesti töissä?",
 "questionType": "text",
 "survey": {
@@ -117,14 +123,14 @@ answerText: "Kyllä käyn"
 
 
 <h2>All Surveys (All data needed for Front-End serialized here)</h2>
-	<p>
-		<strong>Method:</strong> GET <strong>Endpoint:</strong> <strong><a
-			href="/surveyslist">/surveyslist</a></strong>
-	</p>
-	<p>
-		<strong>JSON Example:</strong>
-	</p>
-	<pre><code>[
+<p>
+    <strong>Method:</strong> GET <strong>Endpoint:</strong> <strong><a
+        href="/surveyslist">/surveyslist</a></strong>
+</p>
+<p>
+    <strong>JSON Example:</strong>
+</p>
+<pre><code>[
 {
 surveyId: 2,
 surveyName: "Opiskeluhyvinvointi",
@@ -243,16 +249,16 @@ answer: [ ]
 }
 ]
 	</code></pre>
-	
-	<h2>Surveys By Id</h2>
-	<p>
-		<strong>GET </strong><strong> /surveyslist/{id} </strong> <strong>
-		<a href="/surveyslist/3">/surveyslist/3</a></strong>
-	</p>
-	<p>
-		<strong>JSON Example:</strong>
-	</p>
-	<pre><code>{
+
+<h2>Surveys By Id</h2>
+<p>
+    <strong>GET </strong><strong> /surveyslist/{id} </strong> <strong>
+    <a href="/surveyslist/3">/surveyslist/3</a></strong>
+</p>
+<p>
+    <strong>JSON Example:</strong>
+</p>
+<pre><code>{
 surveyId: 3,
 surveyName: "Työhyvinvointi",
 surveyDesc: "Kysely työhyvinvoinnista",
@@ -274,27 +280,27 @@ answer: [ ]
 ]
 }</code></pre>
 <h2>New Survey with POST (NOT TESTED, obsolete, handled in Back-End.)</h2>
-	<p>
-		<strong>POST </strong> <strong> /surveyslist (WITH POST)</strong> (Test
-		with <a href="https://www.getpostman.com/" target="_blank">PostMan</a>/etc.)
-	</p>
-	<p>
-		<strong>JSON Example:</strong>
-	</p>
-	<pre><code>surveyId: 3, // NOT NEEDED, autoincrement is on.
+<p>
+    <strong>POST </strong> <strong> /surveyslist (WITH POST)</strong> (Test
+    with <a href="https://www.getpostman.com/" target="_blank">PostMan</a>/etc.)
+</p>
+<p>
+    <strong>JSON Example:</strong>
+</p>
+<pre><code>surveyId: 3, // NOT NEEDED, autoincrement is on.
 surveyName: "Työhyvinvointi",
 surveyDesc: "Kysely työntekijöiden hyvinvoinnista"
 }</code></pre>
 
 <h2>All Answers</h2>
-	<p>
-		<strong>Method:</strong> GET <strong>Endpoint:</strong> <strong><a
-			href="/answers">/answers</a></strong>
-	</p>
-	<p>
-		<strong>JSON Example:</strong>
-	</p>
-	<pre><code>[
+<p>
+    <strong>Method:</strong> GET <strong>Endpoint:</strong> <strong><a
+        href="/answers">/answers</a></strong>
+</p>
+<p>
+    <strong>JSON Example:</strong>
+</p>
+<pre><code>[
 {
 answerID: 17,
 answerText: "Kyllä käyn"
@@ -309,29 +315,29 @@ answerText: "En ymmärrä ;_;"
 }
 ]
 	</code></pre>
-	
-	<h2>Answers By Id</h2>
-	<p>
-		<strong>GET </strong><strong> /answers/{id} </strong> <strong>
-		<a href="/answers/18">/answers/18</a></strong>
-	</p>
-	<p>
-		<strong>JSON Example:</strong>
-	</p>
-	<pre><code>{
+
+<h2>Answers By Id</h2>
+<p>
+    <strong>GET </strong><strong> /answers/{id} </strong> <strong>
+    <a href="/answers/18">/answers/18</a></strong>
+</p>
+<p>
+    <strong>JSON Example:</strong>
+</p>
+<pre><code>{
 answerID: 18,
 answerText: "Muutaman kerran"
 }</code></pre>
 
 <h2>New Answer with POST (USED in Front-End, POST ENDPOINT)</h2>
-	<p>
-		<strong>POST </strong> <strong> /answer (WITH POST)</strong> (Test
-		with <a href="https://www.getpostman.com/" target="_blank">PostMan</a>/etc.)
-	</p>
-	<p>
-		<strong>JSON Example:</strong>
-	</p>
-	<pre><code>{
+<p>
+    <strong>POST </strong> <strong> /answer (WITH POST)</strong> (Test
+    with <a href="https://www.getpostman.com/" target="_blank">PostMan</a>/etc.)
+</p>
+<p>
+    <strong>JSON Example:</strong>
+</p>
+<pre><code>{
 "answerText": "Muutaman kerran",
 "question": {
 "questionID": 5
