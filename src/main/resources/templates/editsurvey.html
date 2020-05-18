@@ -18,31 +18,30 @@
 </head>
 <body>
 
+<header th:insert="header.html :: header"> </header>
+
 <div id="wrapper">
 
     <h3>Edit survey</h3>
-    <br>
 
     <form th:object="${survey}" th:action="@{../savesurvey}" method="post" action="#">
 
         <div>
             <input type="hidden" th:field="*{surveyId}" readonly="readonly" />
         </div>
-        <div>
-            <label for="surveyName">Name the survey</label>
-            <br>
-            <input type="text" id="surveyName" th:field="*{surveyName}">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <label for="surveyName" class="mdl-textfield__label">Name the survey</label>
+            <input type="text" id="surveyName" th:field="*{surveyName}" class="mdl-textfield__input">
         </div>
         <br>
 
-        <div>
-            <label for="surveyDesc">Write a description for the survey</label>
-            <br>
-            <input type="text" id="surveyDesc" th:field="*{surveyDesc}">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <label for="surveyDesc" class="mdl-textfield__label">Write a description for the survey</label>
+            <input type="text" id="surveyDesc" th:field="*{surveyDesc}" class="mdl-textfield__input">
         </div>
         <br>
 
-        <button type="submit">Save</button>
+        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Save</button>
 
     </form>
 
