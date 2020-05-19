@@ -2,48 +2,64 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
+
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-cyan.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="stylesheet" href="/globalstyle.css/"/>
+
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Add a question</title>
 </head>
 <body>
-<a href="../../surveylist">Back</a>
-<h2 th:text="'Add questions to ' + ${thissurvey.getSurveyName()}"></h2>
 
-<form th:object="${question}" th:action="@{../../savequestion}" method="post">
+<header th:insert="header.html :: header"> </header>
 
-    <div>
-        <label for="question">The question</label>
+<div id="wrapper">
+
+    <a href="../../surveylist" class="mdl-button mdl-js-button mdl-button--primary">Back</a>
+    <h3 th:text="'Add questions to ' + ${thissurvey.getSurveyName()}"></h3>
+
+    <form th:object="${question}" th:action="@{../../savequestion}" method="post">
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <label for="question" class="mdl-textfield__label">The question</label>
+            <input type="text" id="question" th:field="*{questionText}" class="mdl-textfield__input">
+        </div>
         <br>
-        <input type="text" id="question" th:field="*{questionText}">
-    </div>
-    <br>
 
-    <div>
-        <select id="questiontype" th:field="*{questionType}">
-            <option value="choose">Choose question type</option>
-            <option th:value="text">Text field question</option>
-            <option th:value="multiplechoice">Multiple choice question</option>
-        </select>
-    </div>
-    <br>
-
-    <div>
-        <input th:field="*{survey.surveyId}" readonly="readonly" type="hidden"/>
-    </div>
-
-    <button type="submit">Save the question</button>
-
-</form>
-
-<h3>Survey's questions</h3>
-
-<div th:each="singlequestion : ${questions}">
-    <div th:if="${singlequestion.getSurvey().getSurveyId()} == ${thissurvey.getSurveyId()}">
-        <a th:text="${singlequestion.getQuestionText()}"></a>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <select id="questiontype" th:field="*{questionType}" class="mdl-textfield__input">
+                <option value="choose">Choose question type</option>
+                <option th:value="text">Text field question</option>
+                <option th:value="multiplechoice">Multiple choice question</option>
+            </select>
+            <label for="questiontype" class="mdl-textfield__label">Choose the questions type</label>
+        </div>
         <br>
-        <a>--------------------------------------</a>
-    </div>
 
+        <div>
+            <input th:field="*{survey.surveyId}" readonly="readonly" type="hidden"/>
+        </div>
+
+        <button type="submit"
+                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Save the
+            question
+        </button>
+
+    </form>
+
+    <h4>Survey's questions</h4>
+
+    <div th:each="singlequestion : ${questions}">
+        <div th:if="${singlequestion.getSurvey().getSurveyId()} == ${thissurvey.getSurveyId()}">
+            <p th:text="${singlequestion.getQuestionText()}"></p>
+            <br>
+            <p>--------------------------------------</p>
+        </div>
+
+    </div>
 </div>
 
 </body>

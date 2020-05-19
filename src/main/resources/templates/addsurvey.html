@@ -2,6 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
+
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-cyan.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="stylesheet" href="/globalstyle.css/"/>
+
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
     <meta charset="UTF-8">
     <title>Add a survey</title>
 
@@ -11,6 +18,8 @@
 </head>
 <body>
 
+<header th:insert="header.html :: header"> </header>
+
 <div id="wrapper">
 
     <h3>Add a survey</h3>
@@ -18,21 +27,19 @@
 
     <form th:object="${survey}" th:action="@{savesurvey}" method="post">
 
-        <div>
-            <label for="surveyName">Name the survey</label>
-            <br>
-            <input type="text" id="surveyName" th:field="*{surveyName}">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <label for="surveyName" class="mdl-textfield__label">Name the survey</label>
+            <input type="text" id="surveyName" th:field="*{surveyName}" class="mdl-textfield__input">
         </div>
         <br>
 
-        <div>
-            <label for="surveyDesc">Write a description for the survey</label>
-            <br>
-            <input type="text" id="surveyDesc" th:field="*{surveyDesc}">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <label for="surveyDesc" class="mdl-textfield__label">Write a description for the survey</label>
+            <input type="text" id="surveyDesc" th:field="*{surveyDesc}" class="mdl-textfield__input">
         </div>
         <br>
 
-        <button type="submit">Save the survey</button>
+        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Save the survey</button>
 
     </form>
 

@@ -2,14 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
+
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-cyan.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="stylesheet" href="/globalstyle.css/"/>
+
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
     <meta charset="UTF-8">
     <title>List of questions</title>
 
-    <link rel="stylesheet" href="/globalstyle.css/"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 </head>
 <body>
+
+<header th:insert="header.html :: header"> </header>
 
 <div id="wrapper">
 
@@ -18,35 +26,33 @@
 
     <form th:object="${question}" th:action="@{savequestion}" method="post">
 
-        <div>
-            <label for="question">The question</label>
-            <br>
-            <input type="text" id="question" th:field="*{questionText}">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <label for="question" class="mdl-textfield__label">The question</label>
+            <input type="text" id="question" th:field="*{questionText}" class="mdl-textfield__input">
         </div>
         <br>
 
-        <div>
-            <select id="questiontype" th:field="*{questionType}">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <select id="questiontype" th:field="*{questionType}" class="mdl-textfield__input">
                 <option value="choose">Choose question type</option>
                 <option th:value="text">Text field question</option>
                 <option th:value="multiplechoice">Multiple choice question</option>
             </select>
+            <label for="questiontype" class="mdl-textfield__label">Choose the questions type</label>
         </div>
         <br>
-        <div>
-            <label for="survey">Which survey is this question a part of:</label>
-            <br>
-            <select id="survey" th:field="*{survey}">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <select id="survey" th:field="*{survey}" class="mdl-textfield__input">
                 <option value="Choose">Choose the survey</option>
                 <option th:each="survey : ${surveys}"
                         th:value="${survey.surveyId}"
                         th:text="${survey.surveyName}"></option>
             </select>
-
+            <label for="survey" class="mdl-textfield__label">Which survey is this question a part of:</label>
         </div>
         <br>
 
-        <button type="submit">Save the question</button>
+        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Save the question</button>
 
     </form>
 
