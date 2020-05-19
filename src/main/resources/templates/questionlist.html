@@ -37,6 +37,10 @@
             <td th:text="${question.questionText}" class="mdl-data-table__cell--non-numeric"></td>
             <td th:text="${question.questionType}" class="mdl-data-table__cell--non-numeric"></td>
             <td th:text="${question.survey}" class="mdl-data-table__cell--non-numeric"></td>
+            <td><div th:if="${question.questionType == 'multiplechoice'}">
+                    <a th:href="@{/question/{id}/addmultichoice(id=${question.getQuestionID()})}"
+                   class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary">
+                Add an Answer Option</a> </div></td>
         </tr>
     </table>
 

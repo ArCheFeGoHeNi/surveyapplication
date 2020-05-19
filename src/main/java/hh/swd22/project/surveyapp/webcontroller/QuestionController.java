@@ -1,8 +1,10 @@
 package hh.swd22.project.surveyapp.webcontroller;
 
 import hh.swd22.project.surveyapp.domain.MultiAnswerOption;
+import hh.swd22.project.surveyapp.domain.MultiAnswerOptionRepository;
 import hh.swd22.project.surveyapp.domain.Question;
 import hh.swd22.project.surveyapp.domain.QuestionRepository;
+import hh.swd22.project.surveyapp.domain.Survey;
 import hh.swd22.project.surveyapp.domain.SurveyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +26,9 @@ public class QuestionController {
 
     @Autowired
     private SurveyRepository surveyRepository;
+    
+    @Autowired
+    private MultiAnswerOptionRepository multiRepo;
 
     //Mapping /index endpoint to thymeleaf template index.html
     @RequestMapping(value = "/index", method = RequestMethod.GET)
@@ -45,17 +50,41 @@ public class QuestionController {
         model.addAttribute("surveys", surveyRepository.findAll());
         return "addquestion"; //addquestion.html
 }
+    
+    //creating an endpoint which grants the option to add multiplechoiceanswers to a single question - Arttu K.
+    @RequestMapping(value = "/question/{id}/addmultichoice", method = RequestMethod.GET)
+    public String addQuestionsToSurvey(@PathVariable("id") Long id, Model model) {
 
-    //Mapping endpoint /addquestion to addquestion.html thymeleaf template in /resources/templates/
-    @RequestMapping(value = "/addmultioptions", method = RequestMethod.GET)
+        Optional<Question> questionOptional = questionRepository.findById(id);
+
+        Question question = questionOptional.get(); // Getting rid of the Optional Wrapper. Same as Surveys.
+
+        Long questionId = question.getQuestionID(); // Getting the id for saving to Model-class... Possible to get this via question solely.
+
+
+        model.addAttribute("thisquestion", question);
+        model.addAttribute("thisquestionId", questionId);
+        model.addAttribute("multiAnswer", new MultiAnswerOption(question)); // A question + an answer option with pre-determined Question class values. 
+        // Created a constructor with only the Question class as a parameter for the MultiAnswerOption class. Arttu K, 19.05.2020.
+        model.addAttribute("multichoices", multiRepo.findAll()); // Getting all answer options; matching these via ID:s (Foreign Key and Primary Key) on the template.
+        return "addmultichoiceoptions";
+    }
+
+   /* @RequestMapping(value = "/addmultioptions", method = RequestMethod.GET) !! OLD AND OBSOLETE - Arttu K.
     public String addMultiOptions(Model model) {
         model.addAttribute("multiOption", new MultiAnswerOption());
-        model.addAttribute("multiChoiceQuestions", questionRepository.findByQuestionType("multiplechoice"));
-        return "addquestion"; //addquestion.html
+        model.addAttribute("multiChoiceQuestions", multiRepo.findAll());
+        return "addmultichoiceoptions"; //addmultihoiceoptions.html
+    } */
+    
+    @RequestMapping(value = "/savemultioption", method = RequestMethod.POST) // Added to be able to save a multioption.
+    public String saveMultiOption(MultiAnswerOption multiOption) {
+        multiRepo.save(multiOption);
+        // System.out.println(question.getSurvey()); Not in use now. Arttu K, 28.04.2020.
+        return "redirect:questionlist"; //Redirects to /questionlist endpoint
     }
 
 
-    //Endpoing /save saves the song to the database and redirects to /questionlist endpoint
     @RequestMapping(value = "/savequestion", method = RequestMethod.POST)
     public String saveQuestion(Question question) {
         questionRepository.save(question);

@@ -38,6 +38,11 @@ public class MultiAnswerOption {
 		this.question = question;
 		
 	}
+    
+    public MultiAnswerOption(Question question) { // Created to start a new MultiChoice with a pre-determined question.
+    	this.question = question;
+
+    }
 
 	public MultiAnswerOption(String answerOption) {
         this.answerOption = answerOption;

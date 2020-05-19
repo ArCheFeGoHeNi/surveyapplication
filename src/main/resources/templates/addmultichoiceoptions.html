@@ -10,35 +10,53 @@
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
     <meta charset="UTF-8">
-    <title>List of questions</title>
+    <title>List of one question's answer choices</title>
 
     <link rel="stylesheet" href="/globalstyle.css/"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 </head>
 <body>
+<header th:insert="header.html :: header"> </header>
 
 <div id="wrapper">
 
-    <h3>Add a question</h3>
-    <br>
+    <a href="../../surveylist" class="mdl-button mdl-js-button mdl-button--primary">Back</a>
+    <h3 th:text="'Add answer options to ' + ${thisquestion.getQuestionText()}"></h3>
 
-    <form th:object="${multiOption}" th:action="@{/addmultioptions}" method="post">
-        <div>
-            <select id="questiontype" th:field="${multiChoiceQuestions}">
-                <option value="choose">Choose question type</option>
-                <option th:value="text">Text field question</option>
-                <option th:value="multiplechoice">Multiple choice question</option>
-            </select>
+    <form th:object="${multiAnswer}" th:action="@{../../savemultioption}" method="post">
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <label for="question" class="mdl-textfield__label">An Answer</label>
+            <input type="text" id="question" th:field="*{answerOption}" class="mdl-textfield__input">
         </div>
         <br>
 
-        <button type="submit">Save the question</button>
+        <br>
+
+        <div>
+            <input th:field="*{question.questionID}" readonly="readonly" type="hidden"/>
+        </div>
+
+        <button type="submit"
+                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Save the
+            answer option
+        </button>
+        <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" href="/questionlist" id="button">Back to question listing</a>
 
     </form>
 
+    <h4>Question's answer choices</h4>
+
+    <div th:each="multichoice : ${multichoices}">
+        <div th:if="${multichoice.getQuestion().getQuestionID()} == ${thisquestion.getQuestionID()}">
+            <p th:text="${multichoice.getAnswerOption()}"></p>
+            <br>
+            <p>--------------------------------------</p>
+        </div>
+
+    </div>
 </div>
 
 </body>
-
 </html>
