@@ -4,3 +4,7 @@
 This is the repository for the backend of the survey application. It's written in Java with spring boot and thymeleaf + the MDL css library.
 
 [Open the backend UI](https://surveyapp-backend.herokuapp.com/).
+
+## Screenshots
+
+<img src="./surveyapp_ss1.png" alt="Screenshot of project"/>
